@@ -312,6 +312,175 @@
             margin-right: 0.5rem;
         }
 
+        /* Early Bird Banner */
+        .early-bird-banner {
+            background: linear-gradient(45deg, #ff6b6b, #ffa500);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            margin-bottom: 2rem;
+            animation: pulse 2s infinite;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .banner-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .banner-icon {
+            font-size: 1.5rem;
+            animation: bounce 1s infinite;
+        }
+
+        .banner-text {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .banner-timer {
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+        }
+
+        /* Social Proof */
+        .social-proof {
+            margin: 2rem 0;
+        }
+
+        .proof-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Trust Indicators */
+        .trust-indicators {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Pricing Updates */
+        .early-bird-notice {
+            background: linear-gradient(45deg, #ff6b6b, #ffa500);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .notice-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .notice-icon {
+            font-size: 1.5rem;
+        }
+
+        .notice-text {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #ff4757;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            animation: shake 0.5s infinite;
+        }
+
+        .price-container {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .old-price {
+            font-size: 1.2rem;
+            color: #999;
+            text-decoration: line-through;
+            margin-bottom: 0.5rem;
+        }
+
+        .savings {
+            font-size: 0.9rem;
+            color: #28a745;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        .btn-pricing {
+            width: 100%;
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+
+        /* Guarantee */
+        .guarantee {
+            background: #f8f9fa;
+            border: 2px solid #28a745;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .guarantee-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .guarantee-icon {
+            font-size: 2rem;
+        }
+
+        .guarantee-text h4 {
+            color: #28a745;
+            margin-bottom: 0.5rem;
+        }
+
+        .guarantee-text p {
+            color: #666;
+            margin: 0;
+        }
+
         /* CTA Section */
         .cta {
             background: #667eea;
@@ -326,10 +495,99 @@
             margin-bottom: 1rem;
         }
 
+        .cta-subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
         .cta p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
             opacity: 0.9;
+        }
+
+        /* Countdown Timer */
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .time-unit {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            min-width: 80px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .time-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .time-label {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .btn-large {
+            font-size: 1.2rem;
+            padding: 1rem 2rem;
+        }
+
+        /* Urgency Indicators */
+        .urgency-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .urgency-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .urgency-icon {
+            font-size: 1.2rem;
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-2px); }
+            75% { transform: translateX(2px); }
         }
 
         /* Footer */
@@ -539,6 +797,141 @@
                 font-size: 1.1rem;
             }
 
+            /* Early Bird Banner Mobile */
+            .early-bird-banner {
+                padding: 0.6rem 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .banner-content {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+
+            .banner-text {
+                font-size: 1rem;
+            }
+
+            .banner-timer {
+                font-size: 0.9rem;
+                padding: 0.2rem 0.6rem;
+            }
+
+            /* Social Proof Mobile */
+            .proof-stats {
+                gap: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 1.5rem;
+            }
+
+            .stat-label {
+                font-size: 0.8rem;
+            }
+
+            /* Pricing Mobile Updates */
+            .early-bird-notice {
+                padding: 0.8rem 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .notice-content {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+
+            .notice-text {
+                font-size: 1rem;
+            }
+
+            .discount-badge {
+                top: 10px;
+                right: 10px;
+                font-size: 0.7rem;
+                padding: 0.2rem 0.6rem;
+            }
+
+            .price-container {
+                margin-bottom: 0.8rem;
+            }
+
+            .old-price {
+                font-size: 1rem;
+            }
+
+            .savings {
+                font-size: 0.8rem;
+            }
+
+            /* Countdown Timer Mobile */
+            .countdown-timer {
+                gap: 0.5rem;
+                margin: 1.5rem 0;
+            }
+
+            .time-unit {
+                padding: 0.8rem;
+                min-width: 60px;
+            }
+
+            .time-number {
+                font-size: 1.5rem;
+            }
+
+            .time-label {
+                font-size: 0.7rem;
+            }
+
+            /* CTA Buttons Mobile */
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .btn-large {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            /* Urgency Indicators Mobile */
+            .urgency-indicators {
+                flex-direction: column;
+                gap: 1rem;
+                margin-top: 1.5rem;
+            }
+
+            .urgency-item {
+                font-size: 0.8rem;
+            }
+
+            /* Guarantee Mobile */
+            .guarantee {
+                padding: 1rem;
+                margin-top: 1.5rem;
+            }
+
+            .guarantee-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+
+            .guarantee-icon {
+                font-size: 1.5rem;
+            }
+
+            .guarantee-text h4 {
+                font-size: 1.1rem;
+            }
+
+            .guarantee-text p {
+                font-size: 0.9rem;
+            }
+
             /* Footer Mobile */
             .footer {
                 padding: 30px 0;
@@ -711,12 +1104,45 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
+            <!-- Early Bird Banner -->
+            <div class="early-bird-banner">
+                <div class="banner-content">
+                    <span class="banner-icon">🔥</span>
+                    <span class="banner-text">EARLY BIRD: 50% СКИДКА до 31 декабря!</span>
+                    <span class="banner-timer" id="countdown"></span>
+                </div>
+            </div>
+            
             <h1>AI-Боты для Образования</h1>
             <h2>Автоматизируйте поддержку студентов с помощью умных ботов</h2>
             <p>Создайте персонализированного AI-бота за 5 минут. Скрапинг сайтов, многоязычная поддержка, аналитика - все включено.</p>
+            
+            <!-- Social Proof -->
+            <div class="social-proof">
+                <div class="proof-stats">
+                    <div class="stat">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Школ используют</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">95%</span>
+                        <span class="stat-label">Удовлетворенность</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Поддержка</span>
+                    </div>
+                </div>
+            </div>
+            
             <div class="hero-buttons">
-                <a href="#contact" class="btn btn-white">Попробовать бесплатно</a>
+                <a href="#pricing" class="btn btn-white btn-cta">Получить скидку 50%</a>
                 <a href="#features" class="btn btn-transparent">Смотреть демо</a>
+            </div>
+            
+            <!-- Trust Indicators -->
+            <div class="trust-indicators">
+                <p>✅ Безопасно • ✅ Без привязки к карте • ✅ Отмена в любое время</p>
             </div>
         </div>
     </section>
@@ -762,11 +1188,22 @@
     <section class="pricing" id="pricing">
         <div class="container">
             <h2 class="section-title">Тарифные планы</h2>
+            <div class="early-bird-notice">
+                <div class="notice-content">
+                    <span class="notice-icon">🎉</span>
+                    <span class="notice-text">EARLY BIRD: 50% скидка на первый год! Предложение действует до 31 декабря 2024</span>
+                </div>
+            </div>
             <div class="pricing-grid">
                 <div class="pricing-card">
+                    <div class="discount-badge">50% OFF</div>
                     <h3>Starter</h3>
                     <p class="description">Идеально для малых школ</p>
-                    <div class="price">€29<span class="price-period">/месяц</span></div>
+                    <div class="price-container">
+                        <div class="old-price">€58</div>
+                        <div class="price">€29<span class="price-period">/месяц</span></div>
+                        <div class="savings">Экономия €348/год</div>
+                    </div>
                     <ul class="features-list">
                         <li><i class="fas fa-check"></i> 1 веб-сайт</li>
                         <li><i class="fas fa-check"></i> 1,000 вопросов/месяц</li>
@@ -774,13 +1211,18 @@
                         <li><i class="fas fa-check"></i> Базовая аналитика</li>
                         <li><i class="fas fa-check"></i> Email поддержка</li>
                     </ul>
-                    <a href="#contact" class="btn btn-outline">Начать бесплатно</a>
+                    <a href="#contact" class="btn btn-outline btn-pricing">Получить скидку</a>
                 </div>
                 <div class="pricing-card popular">
                     <div class="popular-badge">Популярный</div>
+                    <div class="discount-badge">50% OFF</div>
                     <h3>Professional</h3>
                     <p class="description">Для средних образовательных учреждений</p>
-                    <div class="price">€99<span class="price-period">/месяц</span></div>
+                    <div class="price-container">
+                        <div class="old-price">€198</div>
+                        <div class="price">€99<span class="price-period">/месяц</span></div>
+                        <div class="savings">Экономия €1,188/год</div>
+                    </div>
                     <ul class="features-list">
                         <li><i class="fas fa-check"></i> 5 веб-сайтов</li>
                         <li><i class="fas fa-check"></i> 10,000 вопросов/месяц</li>
@@ -789,12 +1231,17 @@
                         <li><i class="fas fa-check"></i> API доступ</li>
                         <li><i class="fas fa-check"></i> Приоритетная поддержка</li>
                     </ul>
-                    <a href="#contact" class="btn btn-primary">Попробовать</a>
+                    <a href="#contact" class="btn btn-primary btn-pricing">Получить скидку</a>
                 </div>
                 <div class="pricing-card">
+                    <div class="discount-badge">50% OFF</div>
                     <h3>Business</h3>
                     <p class="description">Для крупных университетов</p>
-                    <div class="price">€299<span class="price-period">/месяц</span></div>
+                    <div class="price-container">
+                        <div class="old-price">€598</div>
+                        <div class="price">€299<span class="price-period">/месяц</span></div>
+                        <div class="savings">Экономия €3,588/год</div>
+                    </div>
                     <ul class="features-list">
                         <li><i class="fas fa-check"></i> 15 веб-сайтов</li>
                         <li><i class="fas fa-check"></i> 50,000 вопросов/месяц</li>
@@ -803,7 +1250,18 @@
                         <li><i class="fas fa-check"></i> Белый лейбл</li>
                         <li><i class="fas fa-check"></i> Кастомные интеграции</li>
                     </ul>
-                    <a href="#contact" class="btn btn-outline">Связаться с нами</a>
+                    <a href="#contact" class="btn btn-outline btn-pricing">Получить скидку</a>
+                </div>
+            </div>
+            
+            <!-- Money Back Guarantee -->
+            <div class="guarantee">
+                <div class="guarantee-content">
+                    <span class="guarantee-icon">🛡️</span>
+                    <div class="guarantee-text">
+                        <h4>30-дневная гарантия возврата денег</h4>
+                        <p>Если вы не удовлетворены результатом, мы вернем 100% ваших денег</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -812,11 +1270,47 @@
     <!-- CTA Section -->
     <section class="cta" id="contact">
         <div class="container">
-            <h2>Готовы начать?</h2>
-            <p>Создайте своего AI-бота за 5 минут и начните экономить время уже сегодня</p>
-            <a href="https://github.com/visualGravitySense/faq-bot-saas" class="btn btn-white" style="font-size: 1.2rem; padding: 1rem 2rem;">
-                Начать бесплатно
-            </a>
+            <h2>Не упустите возможность!</h2>
+            <p class="cta-subtitle">EARLY BIRD предложение заканчивается через:</p>
+            <div class="countdown-timer" id="mainCountdown">
+                <div class="time-unit">
+                    <span class="time-number" id="days">00</span>
+                    <span class="time-label">дней</span>
+                </div>
+                <div class="time-unit">
+                    <span class="time-number" id="hours">00</span>
+                    <span class="time-label">часов</span>
+                </div>
+                <div class="time-unit">
+                    <span class="time-number" id="minutes">00</span>
+                    <span class="time-label">минут</span>
+                </div>
+                <div class="time-unit">
+                    <span class="time-number" id="seconds">00</span>
+                    <span class="time-label">секунд</span>
+                </div>
+            </div>
+            <p>Получите 50% скидку на первый год и начните экономить время уже сегодня</p>
+            <div class="cta-buttons">
+                <a href="#pricing" class="btn btn-white btn-large">Получить скидку 50%</a>
+                <a href="https://github.com/visualGravitySense/faq-bot-saas" class="btn btn-transparent btn-large">Смотреть демо</a>
+            </div>
+            
+            <!-- Urgency Indicators -->
+            <div class="urgency-indicators">
+                <div class="urgency-item">
+                    <span class="urgency-icon">⚡</span>
+                    <span class="urgency-text">Настройка за 5 минут</span>
+                </div>
+                <div class="urgency-item">
+                    <span class="urgency-icon">🔒</span>
+                    <span class="urgency-text">Безопасная оплата</span>
+                </div>
+                <div class="urgency-item">
+                    <span class="urgency-icon">💯</span>
+                    <span class="urgency-text">30 дней гарантии</span>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -924,6 +1418,109 @@
             }
             lastTouchEnd = now;
         }, false);
+
+        // Countdown Timer
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const endDate = new Date('2024-12-31 23:59:59').getTime();
+            const timeLeft = endDate - now;
+
+            if (timeLeft > 0) {
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                // Update main countdown
+                const daysEl = document.getElementById('days');
+                const hoursEl = document.getElementById('hours');
+                const minutesEl = document.getElementById('minutes');
+                const secondsEl = document.getElementById('seconds');
+
+                if (daysEl) daysEl.textContent = days.toString().padStart(2, '0');
+                if (hoursEl) hoursEl.textContent = hours.toString().padStart(2, '0');
+                if (minutesEl) minutesEl.textContent = minutes.toString().padStart(2, '0');
+                if (secondsEl) secondsEl.textContent = seconds.toString().padStart(2, '0');
+
+                // Update banner countdown
+                const bannerTimer = document.getElementById('countdown');
+                if (bannerTimer) {
+                    bannerTimer.textContent = `${days}д ${hours}ч ${minutes}м`;
+                }
+            } else {
+                // Countdown expired
+                const countdownEl = document.getElementById('mainCountdown');
+                const bannerTimer = document.getElementById('countdown');
+                
+                if (countdownEl) {
+                    countdownEl.innerHTML = '<div class="expired-message">Предложение истекло!</div>';
+                }
+                if (bannerTimer) {
+                    bannerTimer.textContent = 'Истекло!';
+                }
+            }
+        }
+
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call
+
+        // Add urgency effects
+        function addUrgencyEffects() {
+            // Add pulsing effect to CTA buttons
+            const ctaButtons = document.querySelectorAll('.btn-cta, .btn-pricing');
+            ctaButtons.forEach(button => {
+                button.style.animation = 'pulse 2s infinite';
+            });
+
+            // Add scroll-triggered urgency
+            window.addEventListener('scroll', function() {
+                const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                
+                if (scrollPercent > 70) {
+                    // Add urgent messaging when user scrolls down
+                    const ctaSection = document.querySelector('.cta');
+                    if (ctaSection && !ctaSection.classList.contains('urgent')) {
+                        ctaSection.classList.add('urgent');
+                        ctaSection.style.background = 'linear-gradient(135deg, #ff4757 0%, #ff6b6b 100%)';
+                    }
+                }
+            });
+        }
+
+        // Initialize urgency effects
+        addUrgencyEffects();
+
+        // Track conversion events (for analytics)
+        function trackConversion(action, value) {
+            // This would integrate with your analytics platform
+            console.log(`Conversion tracked: ${action} - ${value}`);
+            
+            // Example: Google Analytics 4
+            if (typeof gtag !== 'undefined') {
+                gtag('event', action, {
+                    'event_category': 'conversion',
+                    'value': value
+                });
+            }
+        }
+
+        // Add click tracking to CTA buttons
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('btn-cta') || e.target.classList.contains('btn-pricing')) {
+                trackConversion('cta_click', e.target.textContent.trim());
+            }
+        });
+
+        // Add exit-intent popup (optional)
+        let exitIntentShown = false;
+        document.addEventListener('mouseleave', function(e) {
+            if (e.clientY <= 0 && !exitIntentShown) {
+                exitIntentShown = true;
+                // Show exit-intent popup here
+                alert('Не уходите! Получите 50% скидку прямо сейчас!');
+            }
+        });
     </script>
 </body>
 </html>
