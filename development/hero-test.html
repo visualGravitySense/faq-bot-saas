@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills You Should Have Learned in School</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial Black', Arial, sans-serif;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a1a2e 0%, #2d1b3d 50%, #4a2d5c 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            padding: 40px;
+            max-width: 1200px;
+        }
+
+        .header-text {
+            font-size: 18px;
+            color: #c8c8c8;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .title {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .title-line {
+            display: block;
+            position: relative;
+            margin: 10px 0;
+        }
+
+        .skills {
+            font-size: 120px;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            text-shadow: 4px 4px 0 rgba(0,0,0,0.3);
+        }
+
+        .you {
+            font-size: 140px;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            text-shadow: 4px 4px 0 rgba(0,0,0,0.3);
+        }
+
+        .should-have {
+            font-size: 100px;
+            color: #b47dd6;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            text-shadow: 4px 4px 0 rgba(0,0,0,0.3);
+        }
+
+        .learned-in {
+            font-size: 110px;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            text-shadow: 4px 4px 0 rgba(0,0,0,0.3);
+        }
+
+        .school {
+            font-size: 130px;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            text-shadow: 4px 4px 0 rgba(0,0,0,0.3);
+        }
+
+        .character {
+            position: absolute;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: float 3s ease-in-out infinite;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        .char1 {
+            width: 100px;
+            height: 100px;
+            background: transparent;
+            top: 80px;
+            right: 100px;
+            animation-delay: 0s;
+        }
+
+        .char2 {
+            width: 120px;
+            height: 120px;
+            background: transparent;
+            top: 280px;
+            left: 80px;
+            animation-delay: 0.5s;
+        }
+
+        .char3 {
+            width: 110px;
+            height: 110px;
+            background: transparent;
+            bottom: 180px;
+            right: 200px;
+            animation-delay: 1s;
+        }
+
+        .char4 {
+            width: 100px;
+            height: 100px;
+            background: transparent;
+            bottom: 140px;
+            right: 50px;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(-5deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+        }
+
+        /* Robot image styling */
+        .character img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 15px;
+        }
+
+        .footer-text {
+            font-size: 14px;
+            color: #888;
+            margin-top: 30px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 1024px) {
+            .skills, .you, .school { font-size: 80px; }
+            .should-have, .learned-in { font-size: 70px; }
+            .character { width: 80px !important; height: 80px !important; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-text">Hands-On Courses On</div>
+        
+        <div class="title">
+            <span class="title-line skills">SKILLS</span>
+            <span class="title-line you">YOU</span>
+            <span class="title-line should-have">SHOULD HAVE</span>
+            <span class="title-line learned-in">LEARNED IN</span>
+            <span class="title-line school">SCHOOL</span>
+        </div>
+
+        <div class="footer-text">In Small Communities</div>
+
+        <!-- Characters -->
+        <div class="character char1">
+            <img src="Default_A_friendly_robot_assistant_icon_holding_a_question_mar_3_9678442e-df16-4437-b7f4-d023e6577ca6_0.png" alt="Friendly Robot Assistant" />
+        </div>
+
+        <div class="character char2">
+            <img src="Default_Administrator_robot_with_dashboard_hologram_holding_a_2_d596203b-1dbf-4498-8027-ab6b5e405e87_0.png" alt="Administrator Robot" />
+        </div>
+
+        <div class="character char3">
+            <img src="Default_Expert_instructor_bot_holding_a_clipboard_and_whistle_2_51b67807-2a01-4d59-9aec-e9ee363fed83_0.png" alt="Expert Instructor Bot" />
+        </div>
+
+        <div class="character char4">
+            <img src="Default_Professional_service_robot_with_headset_welcoming_gest_1_68111fdc-7d9a-4fc3-9d3d-f38cfbd6d36d_0.png" alt="Professional Service Robot" />
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills You Should Have Learned in School</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial Black', Arial, sans-serif;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a1a2e 0%, #2d1b3d 50%, #4a2d5c 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            padding: 40px;
+            max-width: 1200px;
+        }
+
+        .header-text {
+            font-size: 18px;
+            color: #c8c8c8;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .title {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .title-line {
+            display: block;
+            position: relative;
+            margin: 10px 0;
+        }
+
+        .skills {
+            font-size: 120px;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            text-shadow: 4px 4px 0 rgba(0,0,0,0.3);
+        }
+
+        .you {
+            font-size: 140px;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            text-shadow: 4px 4px 0 rgba(0,0,0,0.3);
+        }
+
+        .should-have {
+            font-size: 100px;
+            color: #b47dd6;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            text-shadow: 4px 4px 0 rgba(0,0,0,0.3);
+        }
+
+        .learned-in {
+            font-size: 110px;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            text-shadow: 4px 4px 0 rgba(0,0,0,0.3);
+        }
+
+        .school {
+            font-size: 130px;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            text-shadow: 4px 4px 0 rgba(0,0,0,0.3);
+        }
+
+        .character {
+            position: absolute;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: float 3s ease-in-out infinite;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        .char1 {
+            width: 140px;
+            height: 140px;
+            background: linear-gradient(135deg, #ff6ec7 0%, #ff4d9f 100%);
+            top: 80px;
+            right: 100px;
+            animation-delay: 0s;
+        }
+
+        .char2 {
+            width: 160px;
+            height: 160px;
+            background: linear-gradient(135deg, #ffd89b 0%, #ffb347 100%);
+            top: 280px;
+            left: 80px;
+            animation-delay: 0.5s;
+        }
+
+        .char3 {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, #ffb6d9 0%, #ffa3c4 100%);
+            bottom: 180px;
+            right: 200px;
+            animation-delay: 1s;
+        }
+
+        .char4 {
+            width: 140px;
+            height: 140px;
+            background: linear-gradient(135deg, #89c4f4 0%, #5fa8d3 100%);
+            bottom: 140px;
+            right: 50px;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(-5deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+        }
+
+        .eyes {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 8px;
+        }
+
+        .eye {
+            width: 30px;
+            height: 35px;
+            background: white;
+            border-radius: 50%;
+            position: relative;
+            animation: blink 4s infinite;
+        }
+
+        .pupil {
+            width: 15px;
+            height: 15px;
+            background: black;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        @keyframes blink {
+            0%, 48%, 52%, 100% {
+                transform: scaleY(1);
+            }
+            50% {
+                transform: scaleY(0.1);
+            }
+        }
+
+        .mouth {
+            width: 35px;
+            height: 18px;
+            border: 4px solid rgba(0,0,0,0.3);
+            border-top: none;
+            border-radius: 0 0 40px 40px;
+        }
+
+        .hat {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 30px;
+            background: #2d2d2d;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .hat::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 10px;
+            background: #2d2d2d;
+            border-radius: 5px;
+        }
+
+        .footer-text {
+            font-size: 14px;
+            color: #888;
+            margin-top: 30px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 1024px) {
+            .skills, .you, .school { font-size: 80px; }
+            .should-have, .learned-in { font-size: 70px; }
+            .character { width: 100px !important; height: 100px !important; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-text">Hands-On Courses On</div>
+        
+        <div class="title">
+            <span class="title-line skills">SKILLS</span>
+            <span class="title-line you">YOU</span>
+            <span class="title-line should-have">SHOULD HAVE</span>
+            <span class="title-line learned-in">LEARNED IN</span>
+            <span class="title-line school">SCHOOL</span>
+        </div>
+
+        <div class="footer-text">In Small Communities</div>
+
+        <!-- Characters -->
+        <div class="character char1">
+            <div>
+                <div class="eyes">
+                    <div class="eye">
+                        <div class="pupil"></div>
+                    </div>
+                    <div class="eye">
+                        <div class="pupil"></div>
+                    </div>
+                </div>
+                <div class="mouth"></div>
+            </div>
+        </div>
+
+        <div class="character char2">
+            <div style="position: relative;">
+                <div class="hat"></div>
+                <div class="eyes">
+                    <div class="eye">
+                        <div class="pupil"></div>
+                    </div>
+                    <div class="eye">
+                        <div class="pupil"></div>
+                    </div>
+                </div>
+                <div class="mouth"></div>
+            </div>
+        </div>
+
+        <div class="character char3">
+            <div>
+                <div class="eyes">
+                    <div class="eye">
+                        <div class="pupil"></div>
+                    </div>
+                    <div class="eye">
+                        <div class="pupil"></div>
+                    </div>
+                </div>
+                <div class="mouth"></div>
+            </div>
+        </div>
+
+        <div class="character char4">
+            <div>
+                <div class="eyes">
+                    <div class="eye">
+                        <div class="pupil"></div>
+                    </div>
+                    <div class="eye">
+                        <div class="pupil"></div>
+                    </div>
+                </div>
+                <div class="mouth"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
