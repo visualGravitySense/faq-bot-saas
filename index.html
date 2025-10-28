@@ -2,10 +2,9 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>FAQ Bot SaaS - AI-Боты для Образования</title>
-    <meta name="description" content="Автоматизируйте поддержку студентов с помощью умных AI-ботов. Создайте персонализированного бота за 5 минут.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         * {
@@ -14,133 +13,322 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: #333;
+        :root { 
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #ec4899;
+            --accent: #8b5cf6;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-purple: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-pink: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-blue: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            overflow-x: hidden;
+            background: var(--dark);
         }
 
         /* Header */
         .header {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
+            padding: 1.5rem 0;
+            backdrop-filter: blur(20px) saturate(180%);
+            background: rgba(15, 23, 42, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            padding: 1rem 0;
+            background: rgba(15, 23, 42, 0.95);
         }
 
         .nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
         }
 
         .logo {
             font-size: 1.5rem;
-            font-weight: 700;
-            color: #667eea;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .nav-buttons {
+        .nav-links {
             display: flex;
-            gap: 1rem;
+            gap: 2rem;
+            align-items: center;
         }
 
-        /* Mobile Menu Toggle */
-        .mobile-menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: #667eea;
-            cursor: pointer;
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
         }
 
-        .mobile-menu {
-            display: none;
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .nav-links a::after {
+            content: '';
             position: absolute;
-            top: 100%;
+            bottom: -5px;
             left: 0;
-            right: 0;
-            background: white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            padding: 1rem;
-            z-index: 999;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-purple);
+            transition: width 0.3s ease;
         }
 
-        .mobile-menu.active {
-            display: block;
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .btn {
             padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             transition: all 0.3s ease;
             cursor: pointer;
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: #667eea;
-            border: 2px solid #667eea;
-        }
-
-        .btn-outline:hover {
-            background: #667eea;
-            color: white;
+            border: none;
+            display: inline-block;
         }
 
         .btn-primary {
-            background: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
         }
 
         .btn-primary:hover {
-            background: #5a6fd8;
             transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 120px 0 80px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: var(--dark);
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            opacity: 0.4;
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.3) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.2) 0%, transparent 70%);
+            animation: rotate 30s linear infinite reverse;
+        }
+
+        /* Floating Robot Characters */
+        .hero-robot {
+            position: absolute;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: float 3s ease-in-out infinite;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            z-index: 5;
+        }
+
+        .hero-robot img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 15px;
+        }
+
+        .hero-robot-1 {
+            width: 160px;
+            height: 160px;
+            top: 15%;
+            right: 10%;
+            animation-delay: 0s;
+        }
+
+        .hero-robot-2 {
+            width: 120px;
+            height: 120px;
+            top: 35%;
+            left: 8%;
+            animation-delay: 0.5s;
+        }
+
+        .hero-robot-3 {
+            width: 180px;
+            height: 180px;
+            bottom: 25%;
+            right: 15%;
+            animation-delay: 1s;
+        }
+
+        .hero-robot-4 {
+            width: 120px;
+            height: 120px;
+            bottom: 15%;
+            right: 5%;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(-5deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+        }
+
+        @keyframes rotate {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Mobile responsive for hero robots */
+        @media (max-width: 1024px) {
+            .hero-robot {
+                width: 60px !important;
+                height: 60px !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-robot {
+                width: 50px !important;
+                height: 50px !important;
+            }
+            
+            .hero-robot-1 {
+                top: 10%;
+                right: 5%;
+            }
+            
+            .hero-robot-2 {
+                top: 30%;
+                left: 5%;
+            }
+            
+            .hero-robot-3 {
+                bottom: 20%;
+                right: 10%;
+            }
+            
+            .hero-robot-4 {
+                bottom: 10%;
+                right: 2%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-robot {
+                width: 40px !important;
+                height: 40px !important;
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
             text-align: center;
+            max-width: 1200px;
+            padding: 0 2rem;
+            margin: 0 auto;
+        }
+
+        .early-bird {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #02da92c0 0%, #02da63ab 100%);
+            border-radius: 50px;
+            color: rgb(255, 255, 255);
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            line-height: 1.1;
             margin-bottom: 1.5rem;
-            line-height: 1.2;
+            background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.7) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
         }
 
         .hero h2 {
-            font-size: 1.5rem;
-            font-weight: 400;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+            font-size: clamp(0.8rem, 3vw, 1.5rem);
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
+            font-weight: 500;
         }
 
         .hero p {
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: rgba(255, 255, 255, 0.6);
             margin-bottom: 3rem;
-            max-width: 600px;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
-            opacity: 0.9;
         }
 
         .hero-buttons {
@@ -148,151 +336,351 @@
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .btn-hero {
+            padding: 1.25rem 2.5rem;
+            font-size: 1.1rem;
+            border-radius: 16px;
+            font-weight: 700;
         }
 
         .btn-white {
             background: white;
-            color: #667eea;
-            font-size: 1.1rem;
-            padding: 1rem 2rem;
+            color: var(--primary);
         }
 
         .btn-white:hover {
-            background: #f8f9fa;
             transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(255, 255, 255, 0.2);
         }
 
-        .btn-transparent {
+        .btn-outline {
             background: transparent;
             color: white;
-            border: 2px solid white;
-            font-size: 1.1rem;
-            padding: 1rem 2rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
         }
 
-        .btn-transparent:hover {
-            background: rgba(255,255,255,0.1);
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .stats {
+            display: flex;
+            gap: 3rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
         }
 
         /* Features Section */
         .features {
-            padding: 80px 0;
-            background: #f8f9fa;
+            padding: 8rem 2rem;
+            background: linear-gradient(180deg, var(--dark) 0%, #1e293b 100%);
+            position: relative;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 3rem;
-            color: #333;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 4rem;
+            color: white;
         }
 
         .features-grid {
+            max-width: 1400px;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
 
         .feature-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: transform 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            padding: 2.5rem;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="robot-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="2" fill="rgba(102,126,234,0.1)"/><rect x="8" y="8" width="4" height="4" fill="none" stroke="rgba(102,126,234,0.05)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23robot-pattern)"/></svg>');
+            background-size: 40px 40px;
+            background-position: center;
+            background-repeat: repeat;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-purple);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
         }
 
         .feature-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
         }
 
         .feature-icon {
-            font-size: 3rem;
-            color: #667eea;
-            margin-bottom: 1rem;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            overflow: hidden;
+        }
+
+        .feature-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .feature-card:hover .feature-icon img {
+            transform: scale(1.05);
         }
 
         .feature-card h3 {
             font-size: 1.5rem;
-            font-weight: 600;
+            font-weight: 700;
+            color: white;
             margin-bottom: 1rem;
-            color: #333;
         }
 
         .feature-card p {
-            color: #666;
-            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .feature-robot {
+            position: absolute;
+            opacity: 0.1;
+            transition: all 0.4s ease;
+        }
+
+        .feature-card:hover .feature-robot {
+            opacity: 0.2;
+            transform: scale(1.1);
+        }
+
+        .feature-robot.robot-1 {
+            top: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+        }
+
+        .feature-robot.robot-2 {
+            bottom: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+        }
+
+        .feature-robot.robot-3 {
+            top: 50%;
+            right: 30px;
+            width: 45px;
+            height: 45px;
+            transform: translateY(-50%);
+        }
+
+        .feature-robot.robot-4 {
+            bottom: 30px;
+            right: 30px;
+            width: 55px;
+            height: 55px;
         }
 
         /* Pricing Section */
         .pricing {
-            padding: 80px 0;
-            background: white;
+            padding: 8rem 2rem;
+            background: var(--dark);
+            position: relative;
         }
 
         .pricing-grid {
+            max-width: 1400px;
+            margin: 4rem auto 0;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
+            align-items: start;
         }
 
         .pricing-card {
-            background: white;
-            border: 2px solid #e9ecef;
-            border-radius: 12px;
-            padding: 2rem;
-            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 32px;
+            padding: 3rem;
             position: relative;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
+            overflow: hidden;
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 146px;
+            background: linear-gradient(135deg, rgba(2, 218, 146, 0.4) 0%, rgba(2, 218, 99, 0.3) 100%);
+            border-radius: 32px 32px 0 0;
+            z-index: 1;
+            box-shadow: 0 0 30px rgba(2, 218, 146, 0.2);
+        }
+
+        .pricing-card.popular::before {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.5) 0%, rgba(118, 75, 162, 0.4) 100%);
+            box-shadow: 0 0 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .pricing-card:nth-child(3)::before {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.4) 0%, rgba(255, 142, 83, 0.3) 100%);
+            box-shadow: 0 0 30px rgba(255, 107, 107, 0.2);
         }
 
         .pricing-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transform: translateY(-10px);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
         }
 
         .pricing-card.popular {
-            border-color: #667eea;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
+            border: 2px solid rgba(102, 126, 234, 0.5);
             transform: scale(1.05);
         }
 
         .popular-badge {
             position: absolute;
-            top: -12px;
+            top: -15px;
             left: 50%;
             transform: translateX(-50%);
-            background: #667eea;
+            background: var(--gradient-purple);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            z-index: 3;
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--gradient-pink);
             color: white;
             padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            animation: shake 2s ease-in-out infinite;
+            z-index: 3;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
         }
 
         .pricing-card h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: white;
             margin-bottom: 0.5rem;
-            color: #333;
+            position: relative;
+            z-index: 2;
         }
 
-        .pricing-card .description {
-            color: #666;
-            margin-bottom: 1.5rem;
+        .pricing-description {
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .price-container {
+            margin-bottom: 2rem;
+        }
+
+        .old-price {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: line-through;
+            margin-bottom: 0.5rem;
         }
 
         .price {
-            font-size: 3rem;
-            font-weight: 700;
-            color: #667eea;
-            margin-bottom: 0.5rem;
+            font-size: 4rem;
+            font-weight: 900;
+            background: var(--gradient-purple);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
         }
 
         .price-period {
-            color: #666;
-            font-size: 1rem;
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 500;
+        }
+
+        .savings {
+            margin-top: 0.5rem;
+            color: #10b981;
+            font-weight: 600;
         }
 
         .features-list {
@@ -301,318 +689,361 @@
         }
 
         .features-list li {
-            padding: 0.5rem 0;
-            color: #666;
+            padding: 0.75rem 0;
+            color: rgba(255, 255, 255, 0.8);
             display: flex;
             align-items: center;
+            gap: 0.75rem;
         }
 
-        .features-list li i {
-            color: #28a745;
-            margin-right: 0.5rem;
-        }
-
-        /* Early Bird Banner */
-        .early-bird-banner {
-            background: linear-gradient(45deg, #ff6b6b, #ffa500);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
-            margin-bottom: 2rem;
-            animation: pulse 2s infinite;
-            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
-        }
-
-        .banner-content {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .banner-icon {
-            font-size: 1.5rem;
-            animation: bounce 1s infinite;
-        }
-
-        .banner-text {
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-
-        .banner-timer {
-            font-weight: 600;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-        }
-
-        /* Social Proof */
-        .social-proof {
-            margin: 2rem 0;
-        }
-
-        .proof-stats {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .stat {
-            text-align: center;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .stat-number {
-            display: block;
-            font-size: 2rem;
-            font-weight: 700;
-            color: white;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        /* Trust Indicators */
-        .trust-indicators {
-            margin-top: 2rem;
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        /* Pricing Updates */
-        .early-bird-notice {
-            background: linear-gradient(45deg, #ff6b6b, #ffa500);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
-        }
-
-        .notice-content {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .notice-icon {
-            font-size: 1.5rem;
-        }
-
-        .notice-text {
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-        .discount-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: #ff4757;
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            animation: shake 0.5s infinite;
-        }
-
-        .price-container {
-            position: relative;
-            margin-bottom: 1rem;
-        }
-
-        .old-price {
+        .features-list i {
+            color: #10b981;
             font-size: 1.2rem;
-            color: #999;
-            text-decoration: line-through;
-            margin-bottom: 0.5rem;
-        }
-
-        .savings {
-            font-size: 0.9rem;
-            color: #28a745;
-            font-weight: 600;
-            margin-top: 0.5rem;
         }
 
         .btn-pricing {
             width: 100%;
+            padding: 1.25rem;
+            font-size: 1.1rem;
+            font-weight: 700;
             margin-top: 1rem;
-            font-weight: 600;
-        }
-
-        /* Guarantee */
-        .guarantee {
-            background: #f8f9fa;
-            border: 2px solid #28a745;
-            border-radius: 10px;
-            padding: 1.5rem;
-            margin-top: 2rem;
-            text-align: center;
-        }
-
-        .guarantee-content {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .guarantee-icon {
-            font-size: 2rem;
-        }
-
-        .guarantee-text h4 {
-            color: #28a745;
-            margin-bottom: 0.5rem;
-        }
-
-        .guarantee-text p {
-            color: #666;
-            margin: 0;
         }
 
         /* CTA Section */
         .cta {
-            background: #667eea;
-            color: white;
-            padding: 80px 0;
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
+            z-index: 1;
+        }
+
+        .cta::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(255, 255, 255, 0.1) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, 0.1) 75%);
+            background-size: 60px 60px;
+            background-position: 0 0, 0 30px, 30px -30px, -30px 0px;
+            opacity: 0.3;
+            z-index: 2;
+            animation: glassMosaic 20s linear infinite;
+        }
+
+        @keyframes glassMosaic {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(60px) translateY(60px); }
+        }
+
+        .cta .glass-panel {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            z-index: 3;
+            box-shadow: 
+                0 8px 32px rgba(255, 255, 255, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .cta .glass-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
+            border-radius: 20px;
+            pointer-events: none;
+        }
+
+        .cta .glass-panel:nth-child(1) {
+            top: 5%;
+            left: 3%;
+            width: 80px;
+            height: 60px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .cta .glass-panel:nth-child(2) {
+            top: 15%;
+            right: 8%;
+            width: 70px;
+            height: 50px;
+            animation: float 6s ease-in-out infinite reverse;
+        }
+
+        .cta .glass-panel:nth-child(3) {
+            bottom: 20%;
+            left: 10%;
+            width: 60px;
+            height: 80px;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .cta .glass-panel:nth-child(4) {
+            bottom: 10%;
+            right: 15%;
+            width: 90px;
+            height: 70px;
+            animation: float 7s ease-in-out infinite reverse;
+        }
+
+        .cta .glass-panel:nth-child(5) {
+            top: 30%;
+            left: 20%;
+            width: 50px;
+            height: 40px;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .cta .glass-panel:nth-child(6) {
+            top: 40%;
+            right: 25%;
+            width: 65px;
+            height: 45px;
+            animation: float 5.5s ease-in-out infinite reverse;
+        }
+
+        .cta .glass-panel:nth-child(7) {
+            bottom: 40%;
+            left: 5%;
+            width: 75px;
+            height: 55px;
+            animation: float 6.5s ease-in-out infinite;
+        }
+
+        .cta .glass-panel:nth-child(8) {
+            bottom: 5%;
+            right: 5%;
+            width: 55px;
+            height: 65px;
+            animation: float 4.5s ease-in-out infinite reverse;
+        }
+
+        .cta .glass-panel:nth-child(9) {
+            top: 50%;
+            left: 50%;
+            width: 40px;
+            height: 30px;
+            animation: float 7.5s ease-in-out infinite;
+        }
+
+        .cta .glass-panel:nth-child(10) {
+            top: 60%;
+            right: 40%;
+            width: 85px;
+            height: 60px;
+            animation: float 5.8s ease-in-out infinite reverse;
+        }
+
+        .cta .glass-panel:nth-child(11) {
+            top: 25%;
+            left: 40%;
+            width: 45px;
+            height: 35px;
+            animation: float 6.8s ease-in-out infinite;
+        }
+
+        .cta .glass-panel:nth-child(12) {
+            bottom: 30%;
+            right: 30%;
+            width: 70px;
+            height: 50px;
+            animation: float 4.8s ease-in-out infinite reverse;
+        }
+
+        .cta .glass-panel:nth-child(13) {
+            top: 8%;
+            left: 60%;
+            width: 55px;
+            height: 40px;
+            animation: float 7.2s ease-in-out infinite;
+        }
+
+        .cta .glass-panel:nth-child(14) {
+            bottom: 8%;
+            left: 30%;
+            width: 60px;
+            height: 45px;
+            animation: float 5.2s ease-in-out infinite reverse;
+        }
+
+        .cta .glass-panel:nth-child(15) {
+            top: 70%;
+            right: 10%;
+            width: 35px;
+            height: 25px;
+            animation: float 6.2s ease-in-out infinite;
+        }
+
+        .cta .glass-panel:nth-child(16) {
+            top: 35%;
+            left: 15%;
+            width: 80px;
+            height: 55px;
+            animation: float 5.5s ease-in-out infinite reverse;
+        }
+
+        .cta .glass-panel:nth-child(17) {
+            bottom: 50%;
+            right: 50%;
+            width: 50px;
+            height: 35px;
+            animation: float 7.8s ease-in-out infinite;
+        }
+
+        .cta .glass-panel:nth-child(18) {
+            top: 12%;
+            right: 35%;
+            width: 65px;
+            height: 50px;
+            animation: float 4.2s ease-in-out infinite reverse;
+        }
+
+        .cta .glass-panel:nth-child(19) {
+            bottom: 15%;
+            left: 45%;
+            width: 40px;
+            height: 30px;
+            animation: float 6.5s ease-in-out infinite;
+        }
+
+        .cta .glass-panel:nth-child(20) {
+            top: 55%;
+            left: 8%;
+            width: 75px;
+            height: 60px;
+            animation: float 5.3s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        @keyframes float2 {
+            0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+            25% { transform: translateY(-15px) rotate(-3deg) scale(1.05); }
+            50% { transform: translateY(-25px) rotate(0deg) scale(1.1); }
+            75% { transform: translateY(-10px) rotate(3deg) scale(1.05); }
+        }
+
+        @keyframes float3 {
+            0%, 100% { transform: translateY(0px) rotate(0deg) translateX(0px); }
+            33% { transform: translateY(-18px) rotate(4deg) translateX(10px); }
+            66% { transform: translateY(-12px) rotate(-2deg) translateX(-5px); }
+        }
+
+        .cta .glass-panel:nth-child(odd) {
+            animation-name: float2;
+        }
+
+        .cta .glass-panel:nth-child(3n) {
+            animation-name: float3;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            margin: 0 auto;
             text-align: center;
+            backdrop-filter: blur(1px);
         }
 
         .cta h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            color: white;
             margin-bottom: 1rem;
         }
 
         .cta-subtitle {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            opacity: 0.9;
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 3rem;
         }
 
-        .cta p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        /* Countdown Timer */
-        .countdown-timer {
+        .countdown {
             display: flex;
+            gap: 1.5rem;
             justify-content: center;
-            gap: 1rem;
-            margin: 2rem 0;
+            margin: 3rem 0;
             flex-wrap: wrap;
         }
 
         .time-unit {
             background: rgba(255, 255, 255, 0.1);
-            padding: 1rem;
-            border-radius: 10px;
-            min-width: 80px;
-            text-align: center;
             backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 16px;
+            min-width: 100px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .time-number {
             display: block;
-            font-size: 2rem;
-            font-weight: 700;
+            font-size: 3rem;
+            font-weight: 900;
             color: white;
+            line-height: 1;
         }
 
         .time-label {
-            font-size: 0.8rem;
-            opacity: 0.8;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin: 2rem 0;
-        }
-
-        .btn-large {
-            font-size: 1.2rem;
-            padding: 1rem 2rem;
-        }
-
-        /* Urgency Indicators */
-        .urgency-indicators {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .urgency-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
             font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        .urgency-icon {
-            font-size: 1.2rem;
-        }
-
-        /* Animations */
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
-        }
-
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-2px); }
-            75% { transform: translateX(2px); }
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 0.5rem;
         }
 
         /* Footer */
         .footer {
-            background: #333;
-            color: white;
-            padding: 40px 0;
+            background: #0f172a;
+            padding: 4rem 2rem 2rem;
+            color: rgba(255, 255, 255, 0.7);
         }
 
         .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            gap: 3rem;
+            margin-bottom: 3rem;
         }
 
         .footer h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
+            color: white;
+            font-weight: 700;
             margin-bottom: 1rem;
         }
 
-        .footer p, .footer a {
-            color: #ccc;
+        .footer a {
+            color: rgba(255, 255, 255, 0.6);
             text-decoration: none;
-            line-height: 1.6;
+            transition: color 0.3s ease;
         }
 
         .footer a:hover {
@@ -620,110 +1051,115 @@
         }
 
         .footer-bottom {
-            border-top: 1px solid #555;
-            margin-top: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
             padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
-            color: #999;
         }
 
-        /* Mobile Optimization */
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 15px;
-            }
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
 
-            /* Header Mobile */
+        /* Mobile Navigation */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100vh;
+            background: rgba(15, 23, 42, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 9999;
+            transition: left 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .mobile-menu.active {
+            left: 0;
+        }
+
+        .mobile-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 600;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu a:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /* Responsive Breakpoints */
+
+        /* Extra Small Mobile (320px - 374px) */
+        @media (max-width: 374px) {
             .nav {
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                padding: 0.5rem 0;
-                position: relative;
+                padding: 0 1rem;
             }
 
-            .nav-buttons {
-                display: none;
-            }
-
-            .mobile-menu-toggle {
-                display: block;
-            }
-
-            .mobile-menu {
-                display: none;
-                flex-direction: column;
-                gap: 0.5rem;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: white;
-                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-                padding: 1rem;
-                z-index: 999;
-            }
-
-            .mobile-menu.active {
-                display: flex;
-            }
-
-            .mobile-menu .btn {
-                width: 100%;
-                text-align: center;
-                margin: 0.2rem 0;
-                padding: 0.8rem 1rem;
-                font-size: 0.9rem;
-            }
-
-            /* Hero Mobile */
-            .hero {
-                padding: 100px 0 60px;
+            .logo {
+                font-size: 1.2rem;
             }
 
             .hero h1 {
-                font-size: 2.2rem;
-                line-height: 1.1;
-                margin-bottom: 1rem;
+                font-size: 2rem;
             }
 
             .hero h2 {
-                font-size: 1.1rem;
-                margin-bottom: 1.5rem;
+                font-size: 1rem;
             }
 
             .hero p {
-                font-size: 1rem;
-                margin-bottom: 2rem;
-                padding: 0 10px;
+                font-size: 0.9rem;
             }
 
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-            }
-
-            .btn-white, .btn-transparent {
-                width: 100%;
-                max-width: 280px;
+            .btn-hero {
                 padding: 1rem 1.5rem;
                 font-size: 1rem;
             }
 
-            /* Features Mobile */
-            .features {
-                padding: 60px 0;
+            .hero-buttons {
+                flex-direction: column;
+                gap: 0.75rem;
             }
 
-            .section-title {
-                font-size: 2rem;
-                margin-bottom: 2rem;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
+            .stats {
+                flex-direction: column;
                 gap: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .features, .pricing, .cta {
+                padding: 3rem 1rem;
             }
 
             .feature-card {
@@ -731,277 +1167,298 @@
             }
 
             .feature-icon {
-                font-size: 2.5rem;
-            }
-
-            .feature-card h3 {
-                font-size: 1.3rem;
-            }
-
-            .feature-card p {
-                font-size: 0.95rem;
-            }
-
-            /* Pricing Mobile */
-            .pricing {
-                padding: 60px 0;
-            }
-
-            .pricing-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-                margin-top: 2rem;
+                width: 60px;
+                height: 60px;
             }
 
             .pricing-card {
-                padding: 1.5rem;
-                margin: 0 10px;
-            }
-
-            .pricing-card.popular {
-                transform: none;
-                margin: 0 10px;
-            }
-
-            .pricing-card h3 {
-                font-size: 1.3rem;
+                padding: 2rem;
             }
 
             .price {
-                font-size: 2.5rem;
+                font-size: 3rem;
             }
 
-            .features-list li {
-                font-size: 0.9rem;
-                padding: 0.3rem 0;
-            }
-
-            /* CTA Mobile */
-            .cta {
-                padding: 60px 0;
-            }
-
-            .cta h2 {
-                font-size: 2rem;
-            }
-
-            .cta p {
-                font-size: 1.1rem;
-                padding: 0 10px;
-            }
-
-            .cta .btn {
-                width: 100%;
-                max-width: 300px;
-                padding: 1rem 2rem;
-                font-size: 1.1rem;
-            }
-
-            /* Early Bird Banner Mobile */
-            .early-bird-banner {
-                padding: 0.6rem 1rem;
-                margin-bottom: 1.5rem;
-            }
-
-            .banner-content {
-                flex-direction: column;
+            .countdown {
                 gap: 0.5rem;
-                text-align: center;
-            }
-
-            .banner-text {
-                font-size: 1rem;
-            }
-
-            .banner-timer {
-                font-size: 0.9rem;
-                padding: 0.2rem 0.6rem;
-            }
-
-            /* Social Proof Mobile */
-            .proof-stats {
-                gap: 1.5rem;
-            }
-
-            .stat-number {
-                font-size: 1.5rem;
-            }
-
-            .stat-label {
-                font-size: 0.8rem;
-            }
-
-            /* Pricing Mobile Updates */
-            .early-bird-notice {
-                padding: 0.8rem 1rem;
-                margin-bottom: 1.5rem;
-            }
-
-            .notice-content {
-                flex-direction: column;
-                gap: 0.5rem;
-                text-align: center;
-            }
-
-            .notice-text {
-                font-size: 1rem;
-            }
-
-            .discount-badge {
-                top: 10px;
-                right: 10px;
-                font-size: 0.7rem;
-                padding: 0.2rem 0.6rem;
-            }
-
-            .price-container {
-                margin-bottom: 0.8rem;
-            }
-
-            .old-price {
-                font-size: 1rem;
-            }
-
-            .savings {
-                font-size: 0.8rem;
-            }
-
-            /* Countdown Timer Mobile */
-            .countdown-timer {
-                gap: 0.5rem;
-                margin: 1.5rem 0;
             }
 
             .time-unit {
-                padding: 0.8rem;
                 min-width: 60px;
+                padding: 0.75rem;
             }
 
             .time-number {
                 font-size: 1.5rem;
             }
+        }
 
-            .time-label {
-                font-size: 0.7rem;
+        /* Small Mobile (375px - 413px) */
+        @media (min-width: 375px) and (max-width: 413px) {
+            .hero h1 {
+                font-size: 2.2rem;
             }
 
-            /* CTA Buttons Mobile */
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-            }
-
-            .btn-large {
-                width: 100%;
-                max-width: 280px;
-            }
-
-            /* Urgency Indicators Mobile */
-            .urgency-indicators {
-                flex-direction: column;
-                gap: 1rem;
-                margin-top: 1.5rem;
-            }
-
-            .urgency-item {
-                font-size: 0.8rem;
-            }
-
-            /* Guarantee Mobile */
-            .guarantee {
-                padding: 1rem;
-                margin-top: 1.5rem;
-            }
-
-            .guarantee-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 0.5rem;
-            }
-
-            .guarantee-icon {
-                font-size: 1.5rem;
-            }
-
-            .guarantee-text h4 {
+            .hero h2 {
                 font-size: 1.1rem;
             }
 
-            .guarantee-text p {
-                font-size: 0.9rem;
+            .btn-hero {
+                padding: 1.1rem 1.8rem;
             }
 
-            /* Footer Mobile */
-            .footer {
-                padding: 30px 0;
+            .stats {
+                gap: 2rem;
+            }
+
+            .time-unit {
+                min-width: 65px;
+            }
+        }
+
+        /* Medium Mobile (414px - 479px) */
+        @media (min-width: 414px) and (max-width: 479px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero h2 {
+                font-size: 1.2rem;
+            }
+
+            .btn-hero {
+                padding: 1.2rem 2rem;
+            }
+
+            .stats {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 1.5rem;
+            }
+
+            .time-unit {
+                min-width: 70px;
+            }
+        }
+
+        /* Large Mobile (480px - 767px) */
+        @media (min-width: 480px) and (max-width: 767px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero h2 {
+                font-size: 1.3rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .btn-hero {
+                padding: 1.25rem 2.2rem;
+                font-size: 1.05rem;
+            }
+
+            .hero-buttons {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .stats {
+                flex-direction: row;
+                gap: 2rem;
+            }
+
+            .features, .pricing, .cta {
+                padding: 5rem 1.5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+
+            .pricing-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+
+            .countdown {
+                gap: 1rem;
+            }
+
+            .time-unit {
+                min-width: 80px;
+                padding: 1.2rem;
+            }
+
+            .time-number {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* Tablet Portrait (768px - 833px) */
+        @media (min-width: 768px) and (max-width: 833px) {
+            .nav-links {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: none;
+            }
+
+            .hero {
+                min-height: 100vh;
+                padding: 0;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .btn-hero {
+                padding: 1.25rem 2.5rem;
+                font-size: 1.1rem;
+            }
+
+            .stats {
+                gap: 3rem;
+            }
+
+            .features, .pricing, .cta {
+                padding: 6rem 2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .pricing-card.popular {
+                transform: scale(1.02);
+            }
+
+            .countdown {
+                gap: 1.5rem;
+            }
+
+            .time-unit {
+                min-width: 90px;
+                padding: 1.5rem;
+            }
+
+            .time-number {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Tablet Landscape (834px - 1023px) */
+        @media (min-width: 834px) and (max-width: 1023px) {
+            .hero h1 {
+                font-size: 4rem;
+            }
+
+            .hero h2 {
+                font-size: 1.6rem;
+            }
+
+            .hero p {
+                font-size: 1.3rem;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2.5rem;
+            }
+
+            .pricing-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+            }
+
+            .pricing-card.popular {
+                transform: scale(1.05);
+            }
+
+            .countdown {
+                gap: 2rem;
+            }
+
+            .time-unit {
+                min-width: 100px;
+                padding: 1.5rem;
+            }
+
+            .time-number {
+                font-size: 3rem;
+            }
+        }
+
+        /* Small Desktop (1024px - 1199px) */
+        @media (min-width: 1024px) and (max-width: 1199px) {
+            .hero h1 {
+                font-size: 4.5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 3rem;
+            }
+
+            .pricing-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2.5rem;
+            }
+        }
+
+        /* Mobile-specific adjustments */
+        @media (max-width: 767px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 120px 0 60px;
+            }
+
+            .pricing-card.popular {
+                transform: none;
             }
 
             .footer-content {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
                 text-align: center;
-            }
-
-            .footer h3 {
-                font-size: 1.1rem;
-            }
-
-            .footer p, .footer a {
-                font-size: 0.9rem;
+                gap: 2rem;
             }
         }
 
-        /* Extra Small Mobile */
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 10px;
-            }
-
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .hero h2 {
-                font-size: 1rem;
-            }
-
-            .hero p {
-                font-size: 0.95rem;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .feature-card, .pricing-card {
-                padding: 1rem;
-                margin: 0 5px;
-            }
-
-            .price {
-                font-size: 2rem;
-            }
-
-            .cta h2 {
-                font-size: 1.8rem;
-            }
-
-            .nav-buttons {
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .btn {
-                width: 100%;
-                margin: 0.2rem 0;
-            }
-        }
-
-        /* Touch Optimization */
+        /* Touch-friendly improvements */
         @media (hover: none) and (pointer: coarse) {
-            .btn:hover {
-                transform: none;
+            .btn {
+                min-height: 44px;
+                min-width: 44px;
+            }
+
+            .btn-hero {
+                min-height: 56px;
             }
 
             .feature-card:hover {
@@ -1012,173 +1469,586 @@
                 transform: none;
             }
 
-            .btn:active {
-                transform: scale(0.98);
-            }
-
-            /* Larger touch targets */
-            .btn {
-                min-height: 44px;
-                min-width: 44px;
-            }
-
-            .mobile-menu-toggle {
-                min-height: 44px;
-                min-width: 44px;
-                padding: 10px;
-            }
-
-            /* Better touch feedback */
-            .btn:active {
-                background-color: rgba(102, 126, 234, 0.1);
-            }
-
-            .btn-primary:active {
-                background-color: #5a6fd8;
+            .nav-links a:hover::after {
+                width: 0;
             }
         }
 
-        /* Touch device specific styles */
-        .touch-device .btn {
-            -webkit-tap-highlight-color: transparent;
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            -khtml-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
+        /* High DPI displays */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .hero-bg::before,
+            .hero-bg::after {
+                background-size: 200% 200%;
+            }
         }
 
-        /* iOS specific fixes */
+        /* iOS Safari specific fixes */
         @supports (-webkit-touch-callout: none) {
             .hero {
-                -webkit-background-attachment: scroll;
+                min-height: -webkit-fill-available;
             }
             
-            .btn {
-                -webkit-appearance: none;
+            .mobile-menu {
+                min-height: -webkit-fill-available;
             }
         }
 
-        /* Landscape Mobile */
-        @media (max-width: 768px) and (orientation: landscape) {
+        /* Android Chrome specific fixes */
+        @media screen and (-webkit-min-device-pixel-ratio: 0) {
+            .hero-bg::before,
+            .hero-bg::after {
+                will-change: transform;
+            }
+        }
+
+        /* Landscape orientation adjustments */
+        @media screen and (orientation: landscape) and (max-height: 500px) {
             .hero {
+                min-height: auto;
                 padding: 80px 0 40px;
             }
-
+            
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .stats {
+                flex-direction: row;
+                gap: 1.5rem;
+            }
+            
+            .countdown {
+                gap: 0.75rem;
+            }
+            
+            .time-unit {
+                min-width: 60px;
+                padding: 0.75rem;
+            }
+        }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            .hero-bg::before,
+            .hero-bg::after {
+                opacity: 0.6;
+            }
+        }
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            
+            .hero-bg::before,
+            .hero-bg::after {
+                animation: none;
+            }
+        }
+
+        /* Focus styles for accessibility */
+        .btn:focus,
+        .mobile-menu-toggle:focus,
+        .mobile-menu-close:focus {
+            outline: 2px solid #667eea;
+            outline-offset: 2px;
+        }
+
+        /* Skip to content link for screen readers */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: #667eea;
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            border-radius: 4px;
+            z-index: 10000;
+        }
+
+        .skip-link:focus {
+            top: 6px;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: relative;
+            display: inline-block;
+        }
+
+        .language-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .language-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 0.5rem;
+            background: rgba(15, 23, 42, 0.98);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            min-width: 150px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .language-switcher.active .language-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .language-option {
+            padding: 0.75rem 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .language-option:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .language-option.active {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+            color: white;
+        }
+
+        .language-option img {
+            width: 20px;
+            height: 15px;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+
+        /* Exit Intent Popup */
+        .exit-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .exit-popup.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .exit-popup-content {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 16px;
+            padding: 2.5rem;
+            max-width: 450px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            transform: scale(0.8) translateY(50px);
+            transition: all 0.3s ease;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+
+        .exit-popup-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(0deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .exit-popup-content > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .exit-popup.active .exit-popup-content {
+            transform: scale(1) translateY(0);
+        }
+
+        .exit-popup-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: transparent;
+            border: none;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3;
+        }
+
+        .exit-popup-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(90deg);
+        }
+
+        .exit-popup-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .exit-popup h2 {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .exit-popup p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .exit-popup-discount {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+        }
+
+        .exit-popup-discount-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .exit-popup-discount-code {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #ec4899;
+            text-shadow: 0 0 10px rgba(236, 72, 153, 0.3);
+            letter-spacing: 1px;
+        }
+
+        .exit-popup-buttons {
+            display: flex;
+            gap: 0.8rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .exit-popup-btn {
+            padding: 0.7rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            min-width: 100px;
+        }
+
+        .exit-popup-btn-primary {
+            background: #ec4899;
+            color: white;
+            flex: 1;
+            max-width: 140px;
+        }
+
+        .exit-popup-btn-primary:hover {
+            background: #db2777;
+            transform: translateY(-1px);
+        }
+
+        .exit-popup-btn-secondary {
+            background: transparent;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            flex: 1;
+            max-width: 100px;
+        }
+
+        .exit-popup-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .exit-popup-timer {
+            margin-top: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        .exit-popup-timer strong {
+            color: #ffd700;
+        }
+
+        /* Mobile adjustments for exit popup */
+        @media (max-width: 768px) {
+            .exit-popup-content {
+                padding: 2rem;
+                margin: 1rem;
             }
 
-            .hero h2 {
+            .exit-popup h2 {
+                font-size: 1.5rem;
+            }
+
+            .exit-popup p {
                 font-size: 1rem;
             }
 
-            .features, .pricing, .cta {
-                padding: 40px 0;
+            .exit-popup-buttons {
+                flex-direction: column;
+            }
+
+            .exit-popup-btn {
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-link" data-i18n="skip-to-content">Перейти к основному содержимому</a>
+    
     <!-- Header -->
     <header class="header">
-        <nav class="nav container">
-            <div class="logo">FAQ Bot SaaS</div>
-            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <nav class="nav">
+            <div class="logo">FAQ Bot</div>
+            <div class="nav-links">
+                <a href="#features" data-i18n="nav-features">Возможности</a>
+                <a href="#pricing" data-i18n="nav-pricing">Цены</a>
+                <div class="language-switcher">
+                    <button class="language-btn" id="language-btn">
+                        <i class="fas fa-globe"></i>
+                        <span id="current-language">RU</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="language-dropdown" id="language-dropdown">
+                        <div class="language-option active" data-lang="ru">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3Crect fill='%23FFF' width='3' height='2'/%3E%3Crect fill='%230039A6' width='3' height='1'/%3E%3Crect fill='%23D52B1E' width='3' height='1' y='1'/%3E%3C/svg%3E" alt="RU">
+                            <span>Русский</span>
+                        </div>
+                        <div class="language-option" data-lang="en">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3Crect fill='%23012169' width='3' height='2'/%3E%3Cpath fill='%23FFF' d='M0 1h3M0 .67h3M0 1.33h3'/%3E%3Crect fill='%23C8102E' y='1' width='3' height='1'/%3E%3C/svg%3E" alt="EN">
+                            <span>English</span>
+                        </div>
+                        <div class="language-option" data-lang="et">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3Crect fill='%23000095' width='3' height='1'/%3E%3Crect fill='%23000000' y='1' width='3' height='1'/%3E%3Crect fill='%23FFFFFF' y='1' width='3' height='0.5'/%3E%3C/svg%3E" alt="ET">
+                            <span>Eesti</span>
+                        </div>
+                    </div>
+                </div>
+                <a href="#cta" class="btn btn-primary" data-i18n="nav-start-free">Начать бесплатно</a>
+            </div>
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">
                 <i class="fas fa-bars"></i>
             </button>
-            <div class="nav-buttons">
-                <a href="#features" class="btn btn-outline">Возможности</a>
-                <a href="#pricing" class="btn btn-outline">Цены</a>
-                <a href="#contact" class="btn btn-primary">Начать бесплатно</a>
-            </div>
-            <div class="mobile-menu" id="mobileMenu">
-                <a href="#features" class="btn btn-outline">Возможности</a>
-                <a href="#pricing" class="btn btn-outline">Цены</a>
-                <a href="#contact" class="btn btn-primary">Начать бесплатно</a>
-            </div>
         </nav>
     </header>
 
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <button class="mobile-menu-close" id="mobile-menu-close">
+            <i class="fas fa-times"></i>
+        </button>
+        <a href="#features" class="mobile-menu-link">Возможности</a>
+        <a href="#pricing" class="mobile-menu-link">Цены</a>
+        <a href="#cta" class="mobile-menu-link btn btn-primary">Начать бесплатно</a>
+    </div>
+
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <!-- Early Bird Banner -->
-            <div class="early-bird-banner">
-                <div class="banner-content">
-                    <span class="banner-icon">🔥</span>
-                    <span class="banner-text">EARLY BIRD: 50% СКИДКА до 31 декабря!</span>
-                    <span class="banner-timer" id="countdown"></span>
-                </div>
+    <section class="hero" id="main-content">
+        <div class="hero-bg"></div>
+        
+        <!-- Floating Robot Characters -->
+        <div class="hero-robot hero-robot-1">
+            <img src="development/Default_A_friendly_robot_assistant_icon_holding_a_question_mar_3_9678442e-df16-4437-b7f4-d023e6577ca6_0.png" alt="Friendly Robot Assistant" />
+        </div>
+        
+        <div class="hero-robot hero-robot-2">
+            <img src="development/Default_Administrator_robot_with_dashboard_hologram_holding_a_2_d596203b-1dbf-4498-8027-ab6b5e405e87_0.png" alt="Administrator Robot" />
+        </div>
+        
+        <div class="hero-robot hero-robot-3">
+            <img src="development/Default_Expert_instructor_bot_holding_a_clipboard_and_whistle_2_51b67807-2a01-4d59-9aec-e9ee363fed83_0.png" alt="Expert Instructor Bot" />
+        </div>
+        
+        <div class="hero-robot hero-robot-4">
+            <img src="development/Default_Professional_service_robot_with_headset_welcoming_gest_1_68111fdc-7d9a-4fc3-9d3d-f38cfbd6d36d_0.png" alt="Professional Service Robot" />
+        </div>
+        
+        <div class="hero-content">
+            <div class="early-bird">
+                <span>🔥</span>
+                <span data-i18n="early-bird">EARLY BIRD: 50% СКИДКА до 31 декабря!</span>
             </div>
             
-            <h1>AI-Боты для Образования</h1>
-            <h2>Автоматизируйте поддержку студентов с помощью умных ботов</h2>
-            <p>Создайте персонализированного AI-бота за 5 минут. Скрапинг сайтов, многоязычная поддержка, аналитика - все включено.</p>
-            
-            <!-- Social Proof -->
-            <div class="social-proof">
-                <div class="proof-stats">
-                    <div class="stat">
-                        <span class="stat-number">500+</span>
-                        <span class="stat-label">Школ используют</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">95%</span>
-                        <span class="stat-label">Удовлетворенность</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">24/7</span>
-                        <span class="stat-label">Поддержка</span>
-                    </div>
-                </div>
-            </div>
+            <h1 data-i18n="hero-title">AI-Боты для Образования, которые реально работают</h1>
+            <h2 data-i18n="hero-subtitle">Автоматизируйте поддержку студентов с помощью умных ботов</h2>
+            <p data-i18n="hero-description">Создайте персонализированного AI-бота за 5 минут. Скрапинг сайтов, многоязычная поддержка, аналитика - все включено.</p>
             
             <div class="hero-buttons">
-                <a href="#pricing" class="btn btn-white btn-cta">Получить скидку 50%</a>
-                <a href="#features" class="btn btn-transparent">Смотреть демо</a>
+                <a href="#pricing" class="btn btn-white btn-hero" data-i18n="btn-get-discount">Получить скидку 50%</a>
+                <a href="#features" class="btn btn-outline btn-hero" data-i18n="btn-view-demo">Смотреть демо</a>
             </div>
             
-            <!-- Trust Indicators -->
-            <div class="trust-indicators">
-                <p>✅ Безопасно • ✅ Без привязки к карте • ✅ Отмена в любое время</p>
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label" data-i18n="stat-schools">Школ используют</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">95%</span>
+                    <span class="stat-label" data-i18n="stat-satisfaction">Удовлетворенность</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label" data-i18n="stat-support">Поддержка</span>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
     <section class="features" id="features">
-        <div class="container">
-            <h2 class="section-title">Почему выбирают нас?</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3>AI-Powered</h3>
-                    <p>Семантический поиск с использованием Sentence Transformers для точных ответов на вопросы студентов</p>
+        <h2 class="section-title" data-i18n="features-title">Почему выбирают нас?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img src="development/bot-1.png" alt="AI-Powered Bot" />
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>Образовательная Специализация</h3>
-                    <p>Специально разработано для школ, университетов и образовательных платформ</p>
+                <h3 data-i18n="feature-ai-title">AI-Powered</h3>
+                <p data-i18n="feature-ai-desc">Семантический поиск с использованием Sentence Transformers для точных ответов на вопросы студентов</p>
+                <div class="feature-robot robot-1">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="20" y="20" width="60" height="40" fill="rgba(102,126,234,0.3)" rx="5"/>
+                        <circle cx="35" cy="35" r="3" fill="rgba(255,255,255,0.8)"/>
+                        <circle cx="65" cy="35" r="3" fill="rgba(255,255,255,0.8)"/>
+                        <rect x="40" y="45" width="20" height="2" fill="rgba(255,255,255,0.6)"/>
+                        <rect x="15" y="30" width="10" height="20" fill="rgba(102,126,234,0.2)" rx="2"/>
+                        <rect x="75" y="30" width="10" height="20" fill="rgba(102,126,234,0.2)" rx="2"/>
+                    </svg>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-language"></i>
-                    </div>
-                    <h3>Многоязычность</h3>
-                    <p>Поддержка русского, английского, эстонского и других языков из коробки</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img src="development/bot-2.png" alt="Educational Bot" />
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-comments"></i>
-                    </div>
-                    <h3>Множественные Каналы</h3>
-                    <p>Telegram, WhatsApp, Web виджеты - все в одном решении</p>
+                <h3 data-i18n="feature-edu-title">Образовательная Специализация</h3>
+                <p data-i18n="feature-edu-desc">Специально разработано для школ, университетов и образовательных платформ</p>
+                <div class="feature-robot robot-2">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="30" y="25" width="40" height="35" fill="rgba(2,218,146,0.3)" rx="8"/>
+                        <circle cx="40" cy="35" r="2" fill="rgba(255,255,255,0.9)"/>
+                        <circle cx="60" cy="35" r="2" fill="rgba(255,255,255,0.9)"/>
+                        <rect x="45" y="45" width="10" height="2" fill="rgba(255,255,255,0.7)"/>
+                        <rect x="20" y="30" width="8" height="15" fill="rgba(2,218,146,0.2)" rx="2"/>
+                        <rect x="72" y="30" width="8" height="15" fill="rgba(2,218,146,0.2)" rx="2"/>
+                        <rect x="35" y="15" width="30" height="8" fill="rgba(2,218,146,0.4)" rx="2"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img src="development/bot-3.png" alt="Multilingual Bot" />
+                </div>
+                <h3 data-i18n="feature-lang-title">Многоязычность</h3>
+                <p data-i18n="feature-lang-desc">Поддержка русского, английского, эстонского и других языков из коробки</p>
+                <div class="feature-robot robot-3">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="25" y="20" width="50" height="45" fill="rgba(255,107,107,0.3)" rx="6"/>
+                        <circle cx="40" cy="35" r="3" fill="rgba(255,255,255,0.8)"/>
+                        <circle cx="60" cy="35" r="3" fill="rgba(255,255,255,0.8)"/>
+                        <rect x="45" y="50" width="10" height="2" fill="rgba(255,255,255,0.6)"/>
+                        <rect x="15" y="30" width="12" height="25" fill="rgba(255,107,107,0.2)" rx="3"/>
+                        <rect x="73" y="30" width="12" height="25" fill="rgba(255,107,107,0.2)" rx="3"/>
+                        <text x="50" y="70" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.5)">🌍</text>
+                    </svg>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img src="development/bot-4.png" alt="Multi-Channel Bot" />
+                </div>
+                <h3 data-i18n="feature-channels-title">Множественные Каналы</h3>
+                <p data-i18n="feature-channels-desc">Telegram, WhatsApp, Web виджеты - все в одном решении</p>
+                <div class="feature-robot robot-4">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="20" y="25" width="60" height="40" fill="rgba(118,75,162,0.3)" rx="7"/>
+                        <circle cx="35" cy="40" r="2" fill="rgba(255,255,255,0.9)"/>
+                        <circle cx="65" cy="40" r="2" fill="rgba(255,255,255,0.9)"/>
+                        <rect x="45" y="50" width="10" height="2" fill="rgba(255,255,255,0.7)"/>
+                        <rect x="10" y="35" width="8" height="20" fill="rgba(118,75,162,0.2)" rx="2"/>
+                        <rect x="82" y="35" width="8" height="20" fill="rgba(118,75,162,0.2)" rx="2"/>
+                        <circle cx="50" cy="70" r="8" fill="rgba(118,75,162,0.2)"/>
+                        <text x="50" y="75" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.6)">💬</text>
+                    </svg>
                 </div>
             </div>
         </div>
@@ -1186,93 +2056,97 @@
 
     <!-- Pricing Section -->
     <section class="pricing" id="pricing">
-        <div class="container">
-            <h2 class="section-title">Тарифные планы</h2>
-            <div class="early-bird-notice">
-                <div class="notice-content">
-                    <span class="notice-icon">🎉</span>
-                    <span class="notice-text">EARLY BIRD: 50% скидка на первый год! Предложение действует до 31 декабря 2024</span>
+        <h2 class="section-title">Тарифные планы</h2>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <div class="discount-badge">50% OFF</div>
+                <h3>Starter</h3>
+                <p class="pricing-description">Идеально для малых школ</p>
+                <div class="price-container">
+                    <div class="old-price">€58</div>
+                    <div class="price">€29<span class="price-period">/месяц</span></div>
+                    <div class="savings">Экономия €348/год</div>
                 </div>
+                <ul class="features-list">
+                    <li><i class="fas fa-check"></i> 1 веб-сайт</li>
+                    <li><i class="fas fa-check"></i> 1,000 вопросов/месяц</li>
+                    <li><i class="fas fa-check"></i> 1 бот (Telegram)</li>
+                    <li><i class="fas fa-check"></i> Базовая аналитика</li>
+                    <li><i class="fas fa-check"></i> Email поддержка</li>
+                </ul>
+                <a href="#cta" class="btn btn-primary btn-pricing">Получить скидку</a>
             </div>
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <div class="discount-badge">50% OFF</div>
-                    <h3>Starter</h3>
-                    <p class="description">Идеально для малых школ</p>
-                    <div class="price-container">
-                        <div class="old-price">€58</div>
-                        <div class="price">€29<span class="price-period">/месяц</span></div>
-                        <div class="savings">Экономия €348/год</div>
-                    </div>
-                    <ul class="features-list">
-                        <li><i class="fas fa-check"></i> 1 веб-сайт</li>
-                        <li><i class="fas fa-check"></i> 1,000 вопросов/месяц</li>
-                        <li><i class="fas fa-check"></i> 1 бот (Telegram)</li>
-                        <li><i class="fas fa-check"></i> Базовая аналитика</li>
-                        <li><i class="fas fa-check"></i> Email поддержка</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-outline btn-pricing">Получить скидку</a>
+
+            <div class="pricing-card popular">
+                <div class="popular-badge">Популярный</div>
+                <div class="discount-badge">50% OFF</div>
+                <h3>Professional</h3>
+                <p class="pricing-description">Для средних учреждений</p>
+                <div class="price-container">
+                    <div class="old-price">€198</div>
+                    <div class="price">€99<span class="price-period">/месяц</span></div>
+                    <div class="savings">Экономия €1,188/год</div>
                 </div>
-                <div class="pricing-card popular">
-                    <div class="popular-badge">Популярный</div>
-                    <div class="discount-badge">50% OFF</div>
-                    <h3>Professional</h3>
-                    <p class="description">Для средних образовательных учреждений</p>
-                    <div class="price-container">
-                        <div class="old-price">€198</div>
-                        <div class="price">€99<span class="price-period">/месяц</span></div>
-                        <div class="savings">Экономия €1,188/год</div>
-                    </div>
-                    <ul class="features-list">
-                        <li><i class="fas fa-check"></i> 5 веб-сайтов</li>
-                        <li><i class="fas fa-check"></i> 10,000 вопросов/месяц</li>
-                        <li><i class="fas fa-check"></i> 3 бота (Telegram, WhatsApp, Web)</li>
-                        <li><i class="fas fa-check"></i> Расширенная аналитика</li>
-                        <li><i class="fas fa-check"></i> API доступ</li>
-                        <li><i class="fas fa-check"></i> Приоритетная поддержка</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-primary btn-pricing">Получить скидку</a>
-                </div>
-                <div class="pricing-card">
-                    <div class="discount-badge">50% OFF</div>
-                    <h3>Business</h3>
-                    <p class="description">Для крупных университетов</p>
-                    <div class="price-container">
-                        <div class="old-price">€598</div>
-                        <div class="price">€299<span class="price-period">/месяц</span></div>
-                        <div class="savings">Экономия €3,588/год</div>
-                    </div>
-                    <ul class="features-list">
-                        <li><i class="fas fa-check"></i> 15 веб-сайтов</li>
-                        <li><i class="fas fa-check"></i> 50,000 вопросов/месяц</li>
-                        <li><i class="fas fa-check"></i> Неограниченные боты</li>
-                        <li><i class="fas fa-check"></i> Продвинутая аналитика</li>
-                        <li><i class="fas fa-check"></i> Белый лейбл</li>
-                        <li><i class="fas fa-check"></i> Кастомные интеграции</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-outline btn-pricing">Получить скидку</a>
-                </div>
+                <ul class="features-list">
+                    <li><i class="fas fa-check"></i> 5 веб-сайтов</li>
+                    <li><i class="fas fa-check"></i> 10,000 вопросов/месяц</li>
+                    <li><i class="fas fa-check"></i> 3 бота</li>
+                    <li><i class="fas fa-check"></i> Расширенная аналитика</li>
+                    <li><i class="fas fa-check"></i> API доступ</li>
+                    <li><i class="fas fa-check"></i> Приоритетная поддержка</li>
+                </ul>
+                <a href="#cta" class="btn btn-primary btn-pricing">Получить скидку</a>
             </div>
-            
-            <!-- Money Back Guarantee -->
-            <div class="guarantee">
-                <div class="guarantee-content">
-                    <span class="guarantee-icon">🛡️</span>
-                    <div class="guarantee-text">
-                        <h4>30-дневная гарантия возврата денег</h4>
-                        <p>Если вы не удовлетворены результатом, мы вернем 100% ваших денег</p>
-                    </div>
+
+            <div class="pricing-card">
+                <div class="discount-badge">50% OFF</div>
+                <h3>Business</h3>
+                <p class="pricing-description">Для крупных университетов</p>
+                <div class="price-container">
+                    <div class="old-price">€598</div>
+                    <div class="price">€299<span class="price-period">/месяц</span></div>
+                    <div class="savings">Экономия €3,588/год</div>
                 </div>
+                <ul class="features-list">
+                    <li><i class="fas fa-check"></i> 15 веб-сайтов</li>
+                    <li><i class="fas fa-check"></i> 50,000 вопросов/месяц</li>
+                    <li><i class="fas fa-check"></i> Неограниченные боты</li>
+                    <li><i class="fas fa-check"></i> Продвинутая аналитика</li>
+                    <li><i class="fas fa-check"></i> Белый лейбл</li>
+                    <!-- <li><i class="fas fa-check"></i> Кастомные интеграции</li> -->
+                </ul>
+                <a href="#cta" class="btn btn-primary btn-pricing">Получить скидку</a>
             </div>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="cta" id="contact">
-        <div class="container">
+    <section class="cta" id="cta">
+        <div class="glass-panel"></div>
+        <div class="glass-panel"></div>
+        <div class="glass-panel"></div>
+        <div class="glass-panel"></div>
+        <div class="glass-panel"></div>
+        <div class="glass-panel"></div>
+        <div class="glass-panel"></div>
+        <div class="glass-panel"></div>
+        <div class="glass-panel"></div>
+        <div class="glass-panel"></div>
+        <div class="glass-panel"></div>
+        <div class="glass-panel"></div>
+        <div class="glass-panel"></div>
+        <div class="glass-panel"></div>
+        <div class="glass-panel"></div>
+        <div class="glass-panel"></div>
+        <div class="glass-panel"></div>
+        <div class="glass-panel"></div>
+        <div class="glass-panel"></div>
+        <div class="glass-panel"></div>
+        <div class="cta-content">
             <h2>Не упустите возможность!</h2>
             <p class="cta-subtitle">EARLY BIRD предложение заканчивается через:</p>
-            <div class="countdown-timer" id="mainCountdown">
+            
+            <div class="countdown">
                 <div class="time-unit">
                     <span class="time-number" id="days">00</span>
                     <span class="time-label">дней</span>
@@ -1290,95 +2164,412 @@
                     <span class="time-label">секунд</span>
                 </div>
             </div>
-            <p>Получите 50% скидку на первый год и начните экономить время уже сегодня</p>
-            <div class="cta-buttons">
-                <a href="#pricing" class="btn btn-white btn-large">Получить скидку 50%</a>
-                <a href="https://github.com/visualGravitySense/faq-bot-saas" class="btn btn-transparent btn-large">Смотреть демо</a>
-            </div>
             
-            <!-- Urgency Indicators -->
-            <div class="urgency-indicators">
-                <div class="urgency-item">
-                    <span class="urgency-icon">⚡</span>
-                    <span class="urgency-text">Настройка за 5 минут</span>
-                </div>
-                <div class="urgency-item">
-                    <span class="urgency-icon">🔒</span>
-                    <span class="urgency-text">Безопасная оплата</span>
-                </div>
-                <div class="urgency-item">
-                    <span class="urgency-icon">💯</span>
-                    <span class="urgency-text">30 дней гарантии</span>
-                </div>
+            <div class="hero-buttons">
+                <a href="#pricing" class="btn btn-white btn-hero">Получить скидку 50%</a>
+                <a href="#features" class="btn btn-outline btn-hero">Смотреть демо</a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div>
-                    <h3>FAQ Bot SaaS</h3>
-                    <p>AI-powered платформа для автоматизации поддержки в образовательных учреждениях</p>
-                </div>
-                <div>
-                    <h3>Контакты</h3>
-                    <p>Email: info@faqbot.ai</p>
-                    <p>GitHub: <a href="https://github.com/visualGravitySense">@visualGravitySense</a></p>
-                    <p>LinkedIn: <a href="https://linkedin.com/in/dmitri-gornakov">in/dmitri-gornakov</a></p>
-                </div>
-                <div>
-                    <h3>Ресурсы</h3>
-                    <p><a href="https://github.com/visualGravitySense/faq-bot-saas">GitHub Repository</a></p>
-                    <p><a href="https://github.com/visualGravitySense/faq-bot-saas/blob/main/README.md">Документация</a></p>
-                    <p><a href="https://github.com/visualGravitySense/faq-bot-saas/issues">Поддержка</a></p>
-                </div>
+        <div class="footer-content">
+            <div>
+                <h3>FAQ Bot SaaS</h3>
+                <p>AI-powered платформа для автоматизации поддержки в образовательных учреждениях</p>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 FAQ Bot SaaS. Все права защищены.</p>
+            <div>
+                <h3>Контакты</h3>
+                <p>Email: info@faqbot.ai</p>
+                <p>GitHub: <a href="https://github.com/visualGravitySense">@visualGravitySense</a></p>
             </div>
+            <div>
+                <h3>Ресурсы</h3>
+                <p><a href="https://github.com/visualGravitySense/faq-bot-saas">GitHub Repository</a></p>
+                <p><a href="https://github.com/visualGravitySense/faq-bot-saas/blob/main/README.md">Документация</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 FAQ Bot SaaS. Все права защищены.</p>
         </div>
     </footer>
 
-    <script>
-        // Mobile menu toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-            const mobileMenu = document.getElementById('mobileMenu');
+    <!-- Exit Intent Popup -->
+    <div class="exit-popup" id="exit-popup">
+        <div class="exit-popup-content">
+            <button class="exit-popup-close" id="exit-popup-close">
+                <i class="fas fa-times"></i>
+            </button>
             
-            if (mobileMenuToggle && mobileMenu) {
-                mobileMenuToggle.addEventListener('click', function() {
-                    mobileMenu.classList.toggle('active');
-                    const icon = mobileMenuToggle.querySelector('i');
-                    if (mobileMenu.classList.contains('active')) {
-                        icon.className = 'fas fa-times';
-                    } else {
-                        icon.className = 'fas fa-bars';
-                    }
-                });
+            <h2>Limited Time Offer</h2>
+            
+            <div class="exit-popup-discount">
+                <div class="exit-popup-discount-text">
+                    <span style="font-size: 2.5rem; font-weight: 800; color: #ec4899;">40%</span>
+                    <span style="font-size: 1.2rem; font-weight: 500; color: white; margin-left: 0.5rem;">OFF Monthly</span>
+                </div>
+                <div class="exit-popup-discount-text" style="margin-top: 0.5rem;">
+                    <span style="font-size: 2.5rem; font-weight: 800; color: #ec4899;">52%</span>
+                    <span style="font-size: 1.2rem; font-weight: 500; color: white; margin-left: 0.5rem;">OFF Yearly</span>
+                </div>
+                <div style="font-size: 1.1rem; font-weight: 600; color: white; margin-top: 0.8rem;">Premium Plans</div>
+            </div>
+            
+            <div class="exit-popup-discount" style="margin: 1.5rem 0;">
+                <div class="exit-popup-discount-code" id="discount-code" style="font-size: 1.2rem; color: white; font-weight: 600;">Use Code: SUBANDSAVE</div>
+            </div>
+            
+            <div style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem; margin: 1rem 0;">
+                *Offer ends 11.59PM<br>
+                31.10.25 AEDT. T&Cs apply
+            </div>
+            
+            <div class="exit-popup-timer" style="margin-top: 1rem;">
+                <span>Offer expires in: </span>
+                <strong id="popup-timer">05:00</strong>
+            </div>
+            
+            <div class="exit-popup-buttons">
+                <button class="exit-popup-btn exit-popup-btn-secondary" id="exit-popup-no-thanks">No Thanks</button>
+                <a href="#pricing" class="exit-popup-btn exit-popup-btn-primary">Subscribe Now</a>
+            </div>
+        </div>
+    </div>
 
-                // Close mobile menu when clicking on links
-                mobileMenu.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', function() {
-                        mobileMenu.classList.remove('active');
-                        const icon = mobileMenuToggle.querySelector('i');
-                        icon.className = 'fas fa-bars';
-                    });
-                });
+    <script>
+        // Translations
+        const translations = {
+            ru: {
+                'skip-to-content': 'Перейти к основному содержимому',
+                'nav-features': 'Возможности',
+                'nav-pricing': 'Цены',
+                'nav-start-free': 'Начать бесплатно',
+                'early-bird': 'EARLY BIRD: 50% СКИДКА!',
+                'hero-title': 'AI-Боты для Образования, которые реально работают',
+                'hero-subtitle': 'Автоматизируйте поддержку студентов с помощью умных ботов',
+                'hero-description': 'Создайте персонализированного AI-бота за 5 минут. Скрапинг сайтов, многоязычная поддержка, аналитика - все включено.',
+                'btn-get-discount': 'Получить скидку 50%',
+                'btn-view-demo': 'Смотреть демо',
+                'stat-schools': 'Школ используют',
+                'stat-satisfaction': 'Удовлетворенность',
+                'stat-support': 'Поддержка',
+                'features-title': 'Почему выбирают нас?',
+                'feature-ai-title': 'AI-Powered',
+                'feature-ai-desc': 'Семантический поиск с использованием Sentence Transformers для точных ответов на вопросы студентов',
+                'feature-edu-title': 'Образовательная Специализация',
+                'feature-edu-desc': 'Специально разработано для школ, университетов и образовательных платформ',
+                'feature-lang-title': 'Многоязычность',
+                'feature-lang-desc': 'Поддержка русского, английского, эстонского и других языков из коробки',
+                'feature-channels-title': 'Множественные Каналы',
+                'feature-channels-desc': 'Telegram, WhatsApp, Web виджеты - все в одном решении',
+                'pricing-title': 'Тарифные планы',
+                'discount-off': '50% OFF',
+                'popular-badge': 'Популярный',
+                'plan-starter': 'Starter',
+                'plan-starter-desc': 'Идеально для малых школ',
+                'plan-professional': 'Professional',
+                'plan-professional-desc': 'Для средних учреждений',
+                'plan-business': 'Business',
+                'plan-business-desc': 'Для крупных университетов',
+                'price-month': '/месяц',
+                'savings-year': 'Экономия',
+                'per-year': '/год',
+                'btn-get-discount-short': 'Получить скидку',
+                'cta-title': 'Не упустите возможность!',
+                'cta-subtitle': 'EARLY BIRD предложение заканчивается через:',
+                'time-days': 'дней',
+                'time-hours': 'часов',
+                'time-minutes': 'минут',
+                'time-seconds': 'секунд',
+                'footer-company': 'FAQ Bot SaaS',
+                'footer-description': 'AI-powered платформа для автоматизации поддержки в образовательных учреждениях',
+                'footer-contacts': 'Контакты',
+                'footer-resources': 'Ресурсы',
+                'footer-docs': 'Документация',
+                'footer-rights': 'Все права защищены.',
+                'feature-1': '1 веб-сайт',
+                'feature-2': '1,000 вопросов/месяц',
+                'feature-3': '1 бот (Telegram)',
+                'feature-4': 'Базовая аналитика',
+                'feature-5': 'Email поддержка',
+                'feature-6': '5 веб-сайтов',
+                'feature-7': '10,000 вопросов/месяц',
+                'feature-8': '3 бота',
+                'feature-9': 'Расширенная аналитика',
+                'feature-10': 'API доступ',
+                'feature-11': 'Приоритетная поддержка',
+                'feature-12': '15 веб-сайтов',
+                'feature-13': '50,000 вопросов/месяц',
+                'feature-14': 'Неограниченные боты',
+                'feature-15': 'Продвинутая аналитика',
+                'feature-16': 'Белый лейбл',
+                'feature-17': 'Кастомные интеграции',
+                'exit-popup-title': 'Не уходите! У нас есть подарок для вас!',
+                'exit-popup-description': 'Получите эксклюзивную скидку 60% на первый месяц подписки. Предложение действует только сейчас!',
+                'exit-popup-discount-text': 'Ваш промокод:',
+                'exit-popup-claim': 'Получить скидку',
+                'exit-popup-no-thanks': 'Нет, спасибо',
+                'exit-popup-timer': 'Предложение истекает через: '
+            },
+            en: {
+                'skip-to-content': 'Skip to main content',
+                'nav-features': 'Features',
+                'nav-pricing': 'Pricing',
+                'nav-start-free': 'Get Started Free',
+                'early-bird': '🔥 EARLY BIRD: 50% OFF until December 31st!',
+                'hero-title': 'AI Bots for Education That Actually Work',
+                'hero-subtitle': 'Automate student support with smart bots',
+                'hero-description': 'Create a personalized AI bot in 5 minutes. Website scraping, multilingual support, analytics - all included.',
+                'btn-get-discount': 'Get 50% Discount',
+                'btn-view-demo': 'View Demo',
+                'stat-schools': 'Schools use',
+                'stat-satisfaction': 'Satisfaction',
+                'stat-support': 'Support',
+                'features-title': 'Why Choose Us?',
+                'feature-ai-title': 'AI-Powered',
+                'feature-ai-desc': 'Semantic search using Sentence Transformers for accurate answers to student questions',
+                'feature-edu-title': 'Educational Specialization',
+                'feature-edu-desc': 'Designed specifically for schools, universities and educational platforms',
+                'feature-lang-title': 'Multilingual',
+                'feature-lang-desc': 'Support for Russian, English, Estonian and other languages out of the box',
+                'feature-channels-title': 'Multiple Channels',
+                'feature-channels-desc': 'Telegram, WhatsApp, Web widgets - all in one solution',
+                'pricing-title': 'Pricing Plans',
+                'discount-off': '50% OFF',
+                'popular-badge': 'Popular',
+                'plan-starter': 'Starter',
+                'plan-starter-desc': 'Perfect for small schools',
+                'plan-professional': 'Professional',
+                'plan-professional-desc': 'For medium institutions',
+                'plan-business': 'Business',
+                'plan-business-desc': 'For large universities',
+                'price-month': '/month',
+                'savings-year': 'Save',
+                'per-year': '/year',
+                'btn-get-discount-short': 'Get Discount',
+                'cta-title': 'Don\'t Miss Out!',
+                'cta-subtitle': 'EARLY BIRD offer ends in:',
+                'time-days': 'days',
+                'time-hours': 'hours',
+                'time-minutes': 'minutes',
+                'time-seconds': 'seconds',
+                'footer-company': 'FAQ Bot SaaS',
+                'footer-description': 'AI-powered platform for automating support in educational institutions',
+                'footer-contacts': 'Contacts',
+                'footer-resources': 'Resources',
+                'footer-docs': 'Documentation',
+                'footer-rights': 'All rights reserved.',
+                'feature-1': '1 website',
+                'feature-2': '1,000 questions/month',
+                'feature-3': '1 bot (Telegram)',
+                'feature-4': 'Basic analytics',
+                'feature-5': 'Email support',
+                'feature-6': '5 websites',
+                'feature-7': '10,000 questions/month',
+                'feature-8': '3 bots',
+                'feature-9': 'Advanced analytics',
+                'feature-10': 'API access',
+                'feature-11': 'Priority support',
+                'feature-12': '15 websites',
+                'feature-13': '50,000 questions/month',
+                'feature-14': 'Unlimited bots',
+                'feature-15': 'Advanced analytics',
+                'feature-16': 'White label',
+                'feature-17': 'Custom integrations',
+                'exit-popup-title': 'Don\'t go! We have a gift for you!',
+                'exit-popup-description': 'Get an exclusive 60% discount on your first month subscription. This offer is only available right now!',
+                'exit-popup-discount-text': 'Your promo code:',
+                'exit-popup-claim': 'Get Discount',
+                'exit-popup-no-thanks': 'No, thanks',
+                'exit-popup-timer': 'Offer expires in: '
+            },
+            et: {
+                'skip-to-content': 'Mine põhisisu juurde',
+                'nav-features': 'Võimalused',
+                'nav-pricing': 'Hinnad',
+                'nav-start-free': 'Alusta tasuta',
+                'early-bird': '🔥 EARLY BIRD: 50% SOHK 31. detsembrini!',
+                'hero-title': 'Haridusalased FAQ robotid, mis tegelikult toimivad',
+                'hero-subtitle': 'Automatiseeri õpilaste toe nutikate robotitega',
+                'hero-description': 'Loo personaliseeritud AI-robot 5 minutiga. Veebilehtede skrapeerimine, mitme keele tugi, analüütika - kõik kaasas.',
+                'btn-get-discount': 'Hangi 50% soodus',
+                'btn-view-demo': 'Vaata demo',
+                'stat-schools': 'Kooli kasutavad',
+                'stat-satisfaction': 'Rahulolu',
+                'stat-support': 'Tugi',
+                'features-title': 'Miks meid valida?',
+                'feature-ai-title': 'AI-põhine',
+                'feature-ai-desc': 'Semantiline otsing Sentence Transformers\'i abil õpilaste küsimustele täpsete vastuste andmiseks',
+                'feature-edu-title': 'Haridusspetsialiseerumine',
+                'feature-edu-desc': 'Arendatud spetsiaalselt koolide, ülikoolide ja haridusplatvormide jaoks',
+                'feature-lang-title': 'Mitmekeelne',
+                'feature-lang-desc': 'Vene, inglise, eesti ja teiste keelte tugi otse kastist',
+                'feature-channels-title': 'Mitmed kanalid',
+                'feature-channels-desc': 'Telegram, WhatsApp, veebividinad - kõik ühes lahenduses',
+                'pricing-title': 'Hinnapaketid',
+                'discount-off': '50% SOODSUS',
+                'popular-badge': 'Populaarne',
+                'plan-starter': 'Starter',
+                'plan-starter-desc': 'Ideaalne väikeste koolide jaoks',
+                'plan-professional': 'Professional',
+                'plan-professional-desc': 'Keskmiste asutuste jaoks',
+                'plan-business': 'Business',
+                'plan-business-desc': 'Suurtele ülikoolidele',
+                'price-month': '/kuu',
+                'savings-year': 'Kokkuhoit',
+                'per-year': '/aasta',
+                'btn-get-discount-short': 'Hangi soodus',
+                'cta-title': 'Ära jäta kasutamata!',
+                'cta-subtitle': 'EARLY BIRD pakkumine lõppeb:',
+                'time-days': 'päeva',
+                'time-hours': 'tundi',
+                'time-minutes': 'minutit',
+                'time-seconds': 'sekundit',
+                'footer-company': 'FAQ Bot SaaS',
+                'footer-description': 'AI-põhine platvorm haridusasutuste toe automatiseerimiseks',
+                'footer-contacts': 'Kontaktid',
+                'footer-resources': 'Ressursid',
+                'footer-docs': 'Dokumentatsioon',
+                'footer-rights': 'Kõik õigused kaitstud.',
+                'feature-1': '1 veebileht',
+                'feature-2': '1,000 küsimust/kuu',
+                'feature-3': '1 robot (Telegram)',
+                'feature-4': 'Põhianalüütika',
+                'feature-5': 'E-posti tugi',
+                'feature-6': '5 veebilehte',
+                'feature-7': '10,000 küsimust/kuu',
+                'feature-8': '3 robotit',
+                'feature-9': 'Täiustatud analüütika',
+                'feature-10': 'API juurdepääs',
+                'feature-11': 'Prioriteetne tugi',
+                'feature-12': '15 veebilehte',
+                'feature-13': '50,000 küsimust/kuu',
+                'feature-14': 'Piiramatud robotid',
+                'feature-15': 'Täiustatud analüütika',
+                'feature-16': 'Valge leht',
+                'feature-17': 'Kohandatud integratsioonid',
+                'exit-popup-title': 'Ära lahku! Meil on sulle kingitus!',
+                'exit-popup-description': 'Hangi eksklusiivne 60% soodus esimese kuu tellimusele. See pakkumine on saadaval ainult praegu!',
+                'exit-popup-discount-text': 'Sinu sooduskood:',
+                'exit-popup-claim': 'Hangi soodus',
+                'exit-popup-no-thanks': 'Ei, aitäh',
+                'exit-popup-timer': 'Pakkumine aegub: '
+            }
+        };
 
-                // Close mobile menu when clicking outside
-                document.addEventListener('click', function(e) {
-                    if (!mobileMenuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
-                        mobileMenu.classList.remove('active');
-                        const icon = mobileMenuToggle.querySelector('i');
-                        icon.className = 'fas fa-bars';
-                    }
-                });
+        // Current language
+        let currentLang = localStorage.getItem('language') || 'ru';
+
+        // Set language
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('language', lang);
+            document.documentElement.lang = lang;
+            
+            // Update all elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+
+            // Update active language in dropdown
+            document.querySelectorAll('.language-option').forEach(option => {
+                option.classList.remove('active');
+                if (option.getAttribute('data-lang') === lang) {
+                    option.classList.add('active');
+                }
+            });
+
+            // Update current language display
+            document.getElementById('current-language').textContent = lang.toUpperCase();
+
+            // Update page title
+            document.title = lang === 'ru' ? 'FAQ Bot SaaS - AI-Боты для Образования' :
+                            lang === 'en' ? 'FAQ Bot SaaS - AI Bots for Education' :
+                            'FAQ Bot SaaS - AI-robotid hariduse jaoks';
+        }
+
+        // Initialize language on page load
+        setLanguage(currentLang);
+
+        // Mobile menu functionality
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+
+        // Open mobile menu
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        // Close mobile menu
+        mobileMenuClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Close mobile menu when clicking on links
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        mobileMenu.addEventListener('click', (e) => {
+            if (e.target === mobileMenu) {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
             }
         });
 
-        // Smooth scrolling for anchor links
+        // Close mobile menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Countdown timer
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const endDate = new Date('2024-12-31 23:59:59').getTime();
+            const timeLeft = endDate - now;
+
+            if (timeLeft > 0) {
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = days.toString().padStart(2, '0');
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1392,135 +2583,293 @@
             });
         });
 
-        // Add scroll effect to header
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('.header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.backdropFilter = 'blur(10px)';
-            } else {
-                header.style.background = 'white';
-                header.style.backdropFilter = 'none';
-            }
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .pricing-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
         });
 
-        // Touch optimization for mobile
-        if ('ontouchstart' in window) {
-            document.body.classList.add('touch-device');
+        // Touch gesture support for mobile
+        let touchStartY = 0;
+        let touchEndY = 0;
+
+        document.addEventListener('touchstart', (e) => {
+            touchStartY = e.changedTouches[0].screenY;
+        });
+
+        document.addEventListener('touchend', (e) => {
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartY - touchEndY;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // Swipe up - close mobile menu if open
+                    if (mobileMenu.classList.contains('active')) {
+                        mobileMenu.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                }
+            }
         }
 
         // Prevent zoom on double tap for iOS
         let lastTouchEnd = 0;
-        document.addEventListener('touchend', function (event) {
+        document.addEventListener('touchend', (e) => {
             const now = (new Date()).getTime();
             if (now - lastTouchEnd <= 300) {
-                event.preventDefault();
+                e.preventDefault();
             }
             lastTouchEnd = now;
         }, false);
 
-        // Countdown Timer
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const endDate = new Date('2024-12-31 23:59:59').getTime();
-            const timeLeft = endDate - now;
-
-            if (timeLeft > 0) {
-                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-                // Update main countdown
-                const daysEl = document.getElementById('days');
-                const hoursEl = document.getElementById('hours');
-                const minutesEl = document.getElementById('minutes');
-                const secondsEl = document.getElementById('seconds');
-
-                if (daysEl) daysEl.textContent = days.toString().padStart(2, '0');
-                if (hoursEl) hoursEl.textContent = hours.toString().padStart(2, '0');
-                if (minutesEl) minutesEl.textContent = minutes.toString().padStart(2, '0');
-                if (secondsEl) secondsEl.textContent = seconds.toString().padStart(2, '0');
-
-                // Update banner countdown
-                const bannerTimer = document.getElementById('countdown');
-                if (bannerTimer) {
-                    bannerTimer.textContent = `${days}д ${hours}ч ${minutes}м`;
-                }
-            } else {
-                // Countdown expired
-                const countdownEl = document.getElementById('mainCountdown');
-                const bannerTimer = document.getElementById('countdown');
-                
-                if (countdownEl) {
-                    countdownEl.innerHTML = '<div class="expired-message">Предложение истекло!</div>';
-                }
-                if (bannerTimer) {
-                    bannerTimer.textContent = 'Истекло!';
-                }
-            }
-        }
-
-        // Update countdown every second
-        setInterval(updateCountdown, 1000);
-        updateCountdown(); // Initial call
-
-        // Add urgency effects
-        function addUrgencyEffects() {
-            // Add pulsing effect to CTA buttons
-            const ctaButtons = document.querySelectorAll('.btn-cta, .btn-pricing');
-            ctaButtons.forEach(button => {
-                button.style.animation = 'pulse 2s infinite';
-            });
-
-            // Add scroll-triggered urgency
-            window.addEventListener('scroll', function() {
-                const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-                
-                if (scrollPercent > 70) {
-                    // Add urgent messaging when user scrolls down
-                    const ctaSection = document.querySelector('.cta');
-                    if (ctaSection && !ctaSection.classList.contains('urgent')) {
-                        ctaSection.classList.add('urgent');
-                        ctaSection.style.background = 'linear-gradient(135deg, #ff4757 0%, #ff6b6b 100%)';
-                    }
-                }
-            });
-        }
-
-        // Initialize urgency effects
-        addUrgencyEffects();
-
-        // Track conversion events (for analytics)
-        function trackConversion(action, value) {
-            // This would integrate with your analytics platform
-            console.log(`Conversion tracked: ${action} - ${value}`);
-            
-            // Example: Google Analytics 4
-            if (typeof gtag !== 'undefined') {
-                gtag('event', action, {
-                    'event_category': 'conversion',
-                    'value': value
+        // Optimize for mobile performance
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(() => {
+                // Lazy load non-critical animations
+                document.querySelectorAll('.feature-card, .pricing-card').forEach(el => {
+                    el.style.willChange = 'transform, opacity';
                 });
-            }
+            });
         }
 
-        // Add click tracking to CTA buttons
-        document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('btn-cta') || e.target.classList.contains('btn-pricing')) {
-                trackConversion('cta_click', e.target.textContent.trim());
+        // Language switcher functionality
+        const languageBtn = document.getElementById('language-btn');
+        const languageDropdown = document.getElementById('language-dropdown');
+        const languageSwitcher = document.querySelector('.language-switcher');
+        const languageOptions = document.querySelectorAll('.language-option');
+
+        // Toggle language dropdown
+        languageBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            languageSwitcher.classList.toggle('active');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!languageSwitcher.contains(e.target)) {
+                languageSwitcher.classList.remove('active');
             }
         });
 
-        // Add exit-intent popup (optional)
-        let exitIntentShown = false;
-        document.addEventListener('mouseleave', function(e) {
-            if (e.clientY <= 0 && !exitIntentShown) {
-                exitIntentShown = true;
-                // Show exit-intent popup here
-                alert('Не уходите! Получите 50% скидку прямо сейчас!');
+        // Handle language selection
+        languageOptions.forEach(option => {
+            option.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const lang = option.getAttribute('data-lang');
+                setLanguage(lang);
+                languageSwitcher.classList.remove('active');
+            });
+        });
+
+        // Exit Intent Popup functionality
+        const exitPopup = document.getElementById('exit-popup');
+        const exitPopupClose = document.getElementById('exit-popup-close');
+        const exitPopupNoThanks = document.getElementById('exit-popup-no-thanks');
+        const popupTimer = document.getElementById('popup-timer');
+        const discountCode = document.getElementById('discount-code');
+
+        let popupShown = false;
+        let popupTimerInterval;
+        let timeLeft = 300; // 5 minutes in seconds
+
+        // Generate random discount codes
+        const discountCodes = {
+            ru: ['STAY60', 'BONUS50', 'GIFT40', 'SAVE30'],
+            en: ['STAY60', 'BONUS50', 'GIFT40', 'SAVE30'],
+            et: ['STAY60', 'BONUS50', 'GIFT40', 'SAVE30']
+        };
+
+        // Show popup with random discount code
+        function showExitPopup() {
+            if (popupShown) return;
+            
+            popupShown = true;
+            const randomCode = discountCodes[currentLang][Math.floor(Math.random() * discountCodes[currentLang].length)];
+            discountCode.textContent = randomCode;
+            
+            exitPopup.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Start timer
+            startPopupTimer();
+        }
+
+        // Make function globally available
+        window.showExitPopup = showExitPopup;
+
+        // Hide popup
+        function hideExitPopup() {
+            exitPopup.classList.remove('active');
+            document.body.style.overflow = '';
+            clearInterval(popupTimerInterval);
+        }
+
+        // Start popup timer
+        function startPopupTimer() {
+            timeLeft = 300; // Reset to 5 minutes
+            updateTimerDisplay();
+            
+            popupTimerInterval = setInterval(() => {
+                timeLeft--;
+                updateTimerDisplay();
+                
+                if (timeLeft <= 0) {
+                    hideExitPopup();
+                }
+            }, 1000);
+        }
+
+        // Update timer display
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            popupTimer.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        // Exit intent detection
+        let exitIntentTriggered = false;
+        let timeOnPage = 0;
+
+        // Track time on page
+        setInterval(() => {
+            timeOnPage++;
+        }, 1000);
+
+        // Mouse leave detection - более чувствительный
+        document.addEventListener('mouseleave', (e) => {
+            if (e.clientY <= 0 && timeOnPage > 10 && !popupShown && !exitIntentTriggered) {
+                exitIntentTriggered = true;
+                showExitPopup();
             }
         });
+
+        // Дополнительное отслеживание движения мыши к верху экрана
+        let mouseY = 0;
+        let mouseMoveCount = 0;
+        let lastMouseMoveTime = 0;
+        
+        document.addEventListener('mousemove', (e) => {
+            mouseY = e.clientY;
+            mouseMoveCount++;
+            lastMouseMoveTime = Date.now();
+            
+            // Если мышь в верхней части экрана (первые 50px) и пользователь на странице больше 10 секунд
+            if (mouseY <= 50 && timeOnPage > 10 && !popupShown && !exitIntentTriggered) {
+                exitIntentTriggered = true;
+                showExitPopup();
+            }
+        });
+
+        // Отслеживание быстрого движения мыши к верху (как будто пользователь хочет закрыть вкладку)
+        let mouseToTopTimer;
+        document.addEventListener('mousemove', (e) => {
+            if (e.clientY <= 100) {
+                clearTimeout(mouseToTopTimer);
+                mouseToTopTimer = setTimeout(() => {
+                    if (timeOnPage > 10 && !popupShown && !exitIntentTriggered) {
+                        exitIntentTriggered = true;
+                        showExitPopup();
+                    }
+                }, 500); // 500ms задержка
+            }
+        });
+
+        // Scroll to top detection (mobile)
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Если пользователь быстро прокручивает вверх (как будто хочет покинуть страницу)
+            if (scrollTop < lastScrollTop && scrollTop < 100 && timeOnPage > 15 && !popupShown && !exitIntentTriggered) {
+                exitIntentTriggered = true;
+                showExitPopup();
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+
+        // Отслеживание попыток закрыть вкладку (Ctrl+W, Alt+F4, etc.)
+        document.addEventListener('keydown', (e) => {
+            // Ctrl+W или Ctrl+Q (закрыть вкладку)
+            if ((e.ctrlKey && (e.key === 'w' || e.key === 'q')) || 
+                (e.altKey && e.key === 'F4')) {
+                if (timeOnPage > 10 && !popupShown && !exitIntentTriggered) {
+                    e.preventDefault();
+                    exitIntentTriggered = true;
+                    showExitPopup();
+                }
+            }
+        });
+
+        // Отслеживание попыток покинуть страницу
+        window.addEventListener('beforeunload', (e) => {
+            if (timeOnPage > 10 && !popupShown && !exitIntentTriggered) {
+                exitIntentTriggered = true;
+                showExitPopup();
+                e.preventDefault();
+                e.returnValue = '';
+            }
+        });
+
+        // Close popup events
+        exitPopupClose.addEventListener('click', hideExitPopup);
+        exitPopupNoThanks.addEventListener('click', hideExitPopup);
+
+        // Close popup when clicking outside
+        exitPopup.addEventListener('click', (e) => {
+            if (e.target === exitPopup) {
+                hideExitPopup();
+            }
+        });
+
+        // Close popup on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && exitPopup.classList.contains('active')) {
+                hideExitPopup();
+            }
+        });
+
+        // Copy discount code to clipboard
+        discountCode.addEventListener('click', () => {
+            navigator.clipboard.writeText(discountCode.textContent).then(() => {
+                const originalText = discountCode.textContent;
+                discountCode.textContent = 'Скопировано!';
+                discountCode.style.color = '#4ade80';
+                
+                setTimeout(() => {
+                    discountCode.textContent = originalText;
+                    discountCode.style.color = '#ffd700';
+                }, 2000);
+            });
+        });
+
+        // Show popup after 30 seconds if not triggered by exit intent (fallback)
+        setTimeout(() => {
+            if (!popupShown && timeOnPage > 30) {
+                showExitPopup();
+            }
+        }, 30000);
     </script>
 </body>
 </html>
